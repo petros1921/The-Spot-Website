@@ -26,25 +26,20 @@
   </header>
 
 <section class="hero">
-      <div class="hero-overlay">
-    
-      <div class="hero-content">
-        <div class="hero-box">
-          <h1>The Spot</h1>
-          <h2>Kitchen & Cocktail Lounge</h2>
-          <p>Elevating Dining & Nightlife in Style</p>
-    
-          <div class="hero-buttons">
-            <a href="#menu" class="btn btn-primary">View Menu</a>
-            <a href="#contact" class="btn btn-outline">Reserve a Table</a>
-          </div>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <div class="hero-box">
+        <h1>The Spot</h1>
+        <h2>Kitchen & Cocktail Lounge</h2>
+        <p>Elevating Dining & Nightlife in Style</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">View Menu</a>
+          <a href="#contact" class="btn btn-outline">Reserve a Table</a>
         </div>
       </div>
-    
-      <!-- Scroll indicator -->
-      <div class="scroll-indicator">
-        <span></span>
-      </div>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </div>
 </section>
 
 <section id="about" class="section about">
@@ -57,7 +52,6 @@
         Located in the heart of Bole, we create an atmosphere that blends modern elegance
         with vibrant entertainment.
       </p>
-
       <p>
         From live acoustic performances to energetic DJ nights, every experience at
         The Spot is carefully curated to bring people together over great food,
@@ -70,22 +64,18 @@
         <span>Open Mic Nights</span>
         <p>Showcasing rising local talent in an intimate setting.</p>
       </div>
-
       <div class="feature reveal">
         <span>Live DJ Sessions</span>
         <p>Curated music that keeps the energy alive throughout the night.</p>
       </div>
-
       <div class="feature reveal">
         <span>Acoustic Evenings</span>
         <p>Soulful live performances for a relaxed and classy ambiance.</p>
       </div>
-
       <div class="feature reveal">
         <span>Karaoke Nights</span>
         <p>Fun, interactive evenings where guests take center stage.</p>
       </div>
-
       <div class="feature reveal">
         <span>Special Events</span>
         <p>Themed nights and private celebrations hosted regularly.</p>
@@ -94,57 +84,208 @@
 
   </div>
 </section>
- 
 
 <section id="menu" class="section menu">
-    <h2 class="section-title">Featured Dishes</h2>
+  <h2 class="section-title">Our Menu</h2>
+  <p class="menu-subtitle">Crafted with passion · Bole, Addis Ababa</p>
+  <p style="text-align:center; color:#666; font-size:0.8rem; letter-spacing:0.08em; margin-top:-40px; margin-bottom:50px;">
+    * All prices are exclusive of VAT
+  </p>
   
-    <div class="menu-grid">
-      
-      <div class="menu-card">
-        <div class="menu-img">
-          <img src="images/dish1.jpg" alt="Signature Dish">
-          <div class="menu-overlay">
-            <span>Chef Recommended</span>
-          </div>
-        </div>
-        <div class="menu-content">
-          <h3>Signature Dish</h3>
-          <p>Grilled premium cuts served with seasonal vegetables and house sauce.</p>
-          <div class="price">ETB 850</div>
-        </div>
+  <!-- Tab Navigation -->
+  <div class="menu-tabs">
+    <button class="menu-tab active" data-tab="starters">Starters</button>
+    <button class="menu-tab" data-tab="entrees">Entrée</button>
+    <button class="menu-tab" data-tab="habesha">Habesha Corner</button>
+    <button class="menu-tab" data-tab="pasta">Pasta</button>
+    <button class="menu-tab" data-tab="sandwiches">Sandwiches</button>
+  </div>
+
+  <!-- STARTERS -->
+  <div class="menu-panel active" id="tab-starters">
+    <p class="menu-category-label">Starters</p>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Chicken Wings</div>
+        <div class="menu-item-desc">Roasted chicken wings served with a <em>buttery hot sauce</em> or <em>BBQ sauce</em></div>
       </div>
-  
-      <div class="menu-card">
-        <div class="menu-img">
-          <img src="images/dish2.jpg" alt="Chef Special">
-          <div class="menu-overlay">
-            <span>Top Seller</span>
-          </div>
-        </div>
-        <div class="menu-content">
-          <h3>Chef Special</h3>
-          <p>A fusion of local flavors and international cuisine crafted by our head chef.</p>
-          <div class="price">ETB 720</div>
-        </div>
-      </div>
-  
-      <div class="menu-card">
-        <div class="menu-img">
-          <img src="images/dish3.jpg" alt="Customer Favorite">
-          <div class="menu-overlay">
-            <span>Customer Favorite</span>
-          </div>
-        </div>
-        <div class="menu-content">
-          <h3>Customer Favorite</h3>
-          <p>A rich and flavorful dish loved by our guests and paired perfectly with cocktails.</p>
-          <div class="price">ETB 680</div>
-        </div>
-      </div>
-  
+      <div class="menu-item-price">ETB 800</div>
     </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Meatball & Marinara with Garlic Bread</div>
+        <div class="menu-item-desc">Meatballs served with a <em>homemade tomato sauce</em> and garlic bread</div>
+      </div>
+      <div class="menu-item-price">ETB 600</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Sliders</div>
+        <div class="menu-item-desc">Mini sandwiches made of <em>roasted BBQ chicken</em> or <em>slow-roasted beef</em> with mustard sauce</div>
+      </div>
+      <div class="menu-item-price">ETB 800</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Flat Bread</div>
+        <div class="menu-item-desc">Wood-fired flat bread — choose your style</div>
+        <div class="tag-variants">
+          <span class="tag">Margherita</span>
+          <span class="tag">Chicken BBQ</span>
+          <span class="tag">Beef</span>
+        </div>
+      </div>
+      <div class="menu-item-price">—</div>
+    </div>
+  </div>
+
+  <!-- ENTRÉES -->
+  <div class="menu-panel" id="tab-entrees">
+    <p class="menu-category-label">Entrée</p>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Creamy Spinach Chicken</div>
+        <div class="menu-item-desc">Tender pan-seared chicken breasts smothered in a <em>rich garlic cream sauce</em> with spinach and a touch of lemon · <em>No Rice</em></div>
+      </div>
+      <div class="menu-item-price">ETB 1,250</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Pepper Steak</div>
+        <div class="menu-item-desc">Thinly sliced <em>premium tenderloin</em> seared to perfection with a peppery sauce · served with mash or steamed veggies</div>
+      </div>
+      <div class="menu-item-price">ETB 1,500</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Roasted Beef</div>
+        <div class="menu-item-desc"><em>Slow-roasted beef shoulders</em> with rich gravy · served with mashed potato</div>
+      </div>
+      <div class="menu-item-price">ETB 1,400</div>
+    </div>
+  </div>
+
+  <!-- HABESHA CORNER -->
+  <div class="menu-panel" id="tab-habesha">
+    <p class="menu-category-label">Habesha Corner</p>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Tibs</div>
+        <div class="menu-item-desc">Ethiopian-style <em>stir-fried beef</em> seasoned with awaze · served with a side salad</div>
+      </div>
+      <div class="menu-item-price">ETB 1,200</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Shero</div>
+        <div class="menu-item-desc">Creamy <em>chickpea powder</em> stewed with traditional Ethiopian spices · served with a side salad</div>
+      </div>
+      <div class="menu-item-price">ETB 500</div>
+    </div>
+  </div>
+
+  <!-- PASTA -->
+  <div class="menu-panel" id="tab-pasta">
+    <p class="menu-category-label">Pasta · Choice of Rigatoni or Linguine</p>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Creamy Cajun Chicken Pasta</div>
+        <div class="menu-item-desc">Grilled chicken breast seasoned with herbs in a <em>Cajun cream sauce</em> · choice of pasta</div>
+      </div>
+      <div class="menu-item-price">ETB 1,200</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Creamy Cajun Mushroom Pasta</div>
+        <div class="menu-item-desc">Hearty mushrooms in a <em>spiced Cajun cream sauce</em> · choice of pasta</div>
+      </div>
+      <div class="menu-item-price">ETB 850</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Pesto Pasta</div>
+        <div class="menu-item-desc">Traditional <em>basil pesto</em> with toasted nuts and Parmesan · choice of pasta</div>
+      </div>
+      <div class="menu-item-price">ETB 850</div>
+    </div>
+  </div>
+
+  <!-- SANDWICHES -->
+  <div class="menu-panel" id="tab-sandwiches">
+    <p class="menu-category-label">Sandwiches & Burgers</p>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Grilled Chicken Panini</div>
+        <div class="menu-item-desc">Pressed panini with seasoned <em>grilled chicken</em></div>
+      </div>
+      <div class="menu-item-price">ETB 750</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Roasted Beef Panini</div>
+        <div class="menu-item-desc">Pressed panini with <em>slow-roasted beef</em></div>
+      </div>
+      <div class="menu-item-price">ETB 750</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Beef Burger</div>
+        <div class="menu-item-desc">Classic beef patty with <em>lettuce, tomato & onion</em></div>
+      </div>
+      <div class="menu-item-price">ETB 800</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Cheeseburger</div>
+        <div class="menu-item-desc">Beef patty with melted cheese, <em>lettuce, tomato & onion</em></div>
+      </div>
+      <div class="menu-item-price">ETB 950</div>
+    </div>
+  </div>
+
+  <!-- Sides & Condiments Note -->
+  <div class="menu-note-box">
+    <h4>Sides & Condiments</h4>
+    <div class="menu-note-cols">
+      <div class="menu-note-col">
+        <h5>Side Options</h5>
+        <ul>
+          <li>Mashed Potato</li>
+          <li>Steamed Veggies</li>
+          <li>Pasta</li>
+          <li>Salad</li>
+          <li>Roasted Potato</li>
+        </ul>
+      </div>
+      <div class="menu-note-col">
+        <h5>Condiments</h5>
+        <ul>
+          <li>Mayo Awaze</li>
+          <li>Mustard</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </section>
+<!-- END MENU SECTION -->
+
 
 <section id="gallery" class="gallery-fullscreen">
 
@@ -168,7 +309,6 @@
     <div class="gallery-caption">Dining Experience</div>
   </div>
 
-  <!-- NEXT BUTTON -->
   <button class="gallery-next" aria-label="Next slide">
     <span class="arrow">›</span>
   </button>
@@ -180,29 +320,20 @@
 
   <div class="contact-wrapper">
     <div class="contact-card">
-
-      <!-- Location -->
       <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Bole Brass, Addis Ababa, Ethiopia</p>
-
-      <!-- Directions -->
       <p>
         <i class="fas fa-directions"></i> <strong>Directions:</strong>
         <a href="https://maps.google.com" target="_blank">Get Directions on Google Maps</a>
       </p>
-
-      <!-- Phone -->
       <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> 
         <a href="tel:+251990555511">+251 99 055 5511</a>
       </p>
-
-      <!-- Email -->
       <p><i class="fas fa-envelope"></i> <strong>Email:</strong> 
         <a href="mailto:info@thespotaddis.com">info@thespotaddis.com</a>
       </p>
 
       <hr class="contact-divider">
 
-      <!-- Opening Hours -->
       <div class="opening-hours">
         <h3>Opening Hours</h3>
         <p>Monday – Thursday: 11:00 AM – 10:00 PM</p>
@@ -210,48 +341,37 @@
         <p>Sunday: 12:00 PM – 9:00 PM</p>
       </div>
 
-      <!-- Social Media -->
       <div class="social-links">
         <a href="#" class="social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         <a href="#" class="social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Font Awesome CDN (add in <head> if not already) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
 <footer class="footer">
   <div class="footer-container">
-
-    <!-- Brand Info -->
     <div class="footer-brand">
       <h3>The Spot</h3>
       <p>Kitchen & Cocktail Lounge</p>
     </div>
-
-    <!-- Navigation Links -->
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
-
-    <!-- Social Media -->
     <div class="footer-social">
       <a href="#" aria-label="TikTok" class="social-icon"><i class="fab fa-tiktok"></i></a>
       <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
       <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
       <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
     </div>
-
   </div>
-
-  <!-- Bottom Bar -->
   <div class="footer-bottom">
     <p>&copy; 2026 The Spot Restaurant & Bar. All rights reserved. Designed by 
       <a href="https://petrosworku-portfolio.netlify.app/">Petros</a>
@@ -259,10 +379,23 @@
   </div>
 </footer>
 
-<!-- Font Awesome CDN (add in <head>) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
-<!-- External JavaScript -->
 <script src="js/script.js"></script>
+
+<script>
+  // Menu tab switching
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
