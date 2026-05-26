@@ -34,7 +34,8 @@
         <p>Elevating Dining & Nightlife in Style</p>
         <div class="hero-buttons">
           <a href="#menu" class="btn btn-primary">View Menu</a>
-          <a href="#contact" class="btn btn-outline">Reserve a Table</a>
+          <a href="#" class="btn btn-outline">Reserve a Table</a>
+          <a href="#menu" class="btn btn-outline" id="preorderBtn">Preorder Now</a>
         </div>
       </div>
     </div>
@@ -88,265 +89,469 @@
 <section id="menu" class="section menu">
   <h2 class="section-title">Our Menu</h2>
   <p class="menu-subtitle">Crafted with passion · Bole, Addis Ababa</p>
-  <p style="text-align:center; color:#666; font-size:0.8rem; letter-spacing:0.08em; margin-top:-40px; margin-bottom:50px;">
-    * All prices are exclusive of VAT
-  </p>
-  
+  <p class="menu-vat">* All prices are exclusive of VAT</p>
+
   <!-- Tab Navigation -->
   <div class="menu-tabs">
-    <button class="menu-tab active" data-tab="starters">Starters</button>
-    <button class="menu-tab" data-tab="entrees">Entrée</button>
-    <button class="menu-tab" data-tab="habesha">Habesha Corner</button>
-    <button class="menu-tab" data-tab="pasta">Pasta</button>
-    <button class="menu-tab" data-tab="sandwiches">Sandwiches</button>
+    <button class="menu-tab active" data-tab="starters">🥟 Starters</button>
+    <button class="menu-tab" data-tab="entrees">🥩 Entrée</button>
+    <button class="menu-tab" data-tab="habesha">🇪🇹 Habesha</button>
+    <button class="menu-tab" data-tab="pasta">🍝 Pasta</button>
+    <button class="menu-tab" data-tab="sandwiches">🍔 Sandwiches</button>
   </div>
 
-  <!-- STARTERS -->
-  <div class="menu-panel active" id="tab-starters">
-    <p class="menu-category-label">Starters</p>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Chicken Wings</div>
-        <div class="menu-item-desc">Roasted chicken wings served with a <em>buttery hot sauce</em> or <em>BBQ sauce</em></div>
+  <!-- Menu panels container -->
+  <div class="menu-panels">
+    <!-- STARTERS -->
+    <div class="menu-panel active" id="tab-starters">
+      <p class="menu-category-label">🥟 Starters</p>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Chicken Wings</div>
+          <div class="menu-item-desc">Roasted chicken wings with a <em>buttery hot sauce</em> or <em>BBQ sauce</em></div>
+        </div>
+        <div class="menu-item-price">ETB 800</div>
       </div>
-      <div class="menu-item-price">ETB 800</div>
+
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Meatball & Marinara</div>
+          <div class="menu-item-desc">Meatballs with <em>homemade tomato sauce</em> and garlic bread</div>
+        </div>
+        <div class="menu-item-price">ETB 600</div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Sliders</div>
+          <div class="menu-item-desc">Mini sandwiches – <em>roasted BBQ chicken</em> or <em>slow-roasted beef</em> with mustard sauce</div>
+        </div>
+        <div class="menu-item-price">ETB 800</div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Flat Bread</div>
+          <div class="menu-item-desc">Wood-fired flat bread – choose your style</div>
+          <div class="tag-variants">
+            <span class="tag">Margherita</span>
+            <span class="tag">Chicken BBQ</span>
+            <span class="tag">Beef</span>
+          </div>
+        </div>
+        <div class="menu-item-price">—</div>
+      </div>
     </div>
 
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Meatball & Marinara with Garlic Bread</div>
-        <div class="menu-item-desc">Meatballs served with a <em>homemade tomato sauce</em> and garlic bread</div>
+    <!-- ENTRÉES -->
+    <div class="menu-panel" id="tab-entrees">
+      <p class="menu-category-label">🥩 Entrée</p>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Creamy Spinach Chicken</div>
+          <div class="menu-item-desc">Pan-seared chicken in <em>garlic cream sauce</em> with spinach & lemon · No rice</div>
+        </div>
+        <div class="menu-item-price">ETB 1250</div>
       </div>
-      <div class="menu-item-price">ETB 600</div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Pepper Steak</div>
+          <div class="menu-item-desc">Premium tenderloin with peppery sauce · mash or steamed veggies</div>
+        </div>
+        <div class="menu-item-price">ETB 1500</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Roasted Beef</div>
+          <div class="menu-item-desc">Slow-roasted beef shoulders with rich gravy · mashed potato</div>
+        </div>
+        <div class="menu-item-price">ETB 1400</div>
+      </div>
     </div>
 
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Sliders</div>
-        <div class="menu-item-desc">Mini sandwiches made of <em>roasted BBQ chicken</em> or <em>slow-roasted beef</em> with mustard sauce</div>
+    <!-- HABESHA CORNER -->
+    <div class="menu-panel" id="tab-habesha">
+      <p class="menu-category-label">🇪🇹 Habesha Corner</p>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Tibs</div>
+          <div class="menu-item-desc">Stir-fried beef with awaze · side salad</div>
+        </div>
+        <div class="menu-item-price">ETB 1200</div>
       </div>
-      <div class="menu-item-price">ETB 800</div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Shero</div>
+          <div class="menu-item-desc">Creamy chickpea stew with traditional spices · side salad</div>
+        </div>
+        <div class="menu-item-price">ETB 500</div>
+      </div>
     </div>
 
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Flat Bread</div>
-        <div class="menu-item-desc">Wood-fired flat bread — choose your style</div>
-        <div class="tag-variants">
-          <span class="tag">Margherita</span>
-          <span class="tag">Chicken BBQ</span>
-          <span class="tag">Beef</span>
+    <!-- PASTA -->
+    <div class="menu-panel" id="tab-pasta">
+      <p class="menu-category-label">🍝 Pasta · Rigatoni or Linguine</p>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Creamy Cajun Chicken</div>
+          <div class="menu-item-desc">Grilled chicken in Cajun cream sauce</div>
+        </div>
+        <div class="menu-item-price">ETB 1200</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Creamy Cajun Mushroom</div>
+          <div class="menu-item-desc">Mushrooms in spiced Cajun cream sauce</div>
+        </div>
+        <div class="menu-item-price">ETB 850</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Pesto Pasta</div>
+          <div class="menu-item-desc">Basil pesto with toasted nuts & Parmesan</div>
+        </div>
+        <div class="menu-item-price">ETB 850</div>
+      </div>
+    </div>
+
+    <!-- SANDWICHES -->
+    <div class="menu-panel" id="tab-sandwiches">
+      <p class="menu-category-label">🍔 Sandwiches & Burgers</p>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Grilled Chicken Panini</div>
+          <div class="menu-item-desc">Pressed panini with grilled chicken</div>
+        </div>
+        <div class="menu-item-price">ETB 750</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Roasted Beef Panini</div>
+          <div class="menu-item-desc">Pressed panini with slow-roasted beef</div>
+        </div>
+        <div class="menu-item-price">ETB 750</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Beef Burger</div>
+          <div class="menu-item-desc">Beef patty with lettuce, tomato & onion</div>
+        </div>
+        <div class="menu-item-price">ETB 800</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-left">
+          <div class="menu-item-name">Cheeseburger</div>
+          <div class="menu-item-desc">Beef patty + melted cheese, lettuce, tomato & onion</div>
+        </div>
+        <div class="menu-item-price">ETB 950</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sides / condiments expander -->
+  <div class="sides-box">
+    <button class="sides-toggle">🥄 Sides & Condiments <span class="toggle-icon">+</span></button>
+    <div class="sides-content">
+      <div class="sides-grid">
+        <div>
+          <h5>Side Options</h5>
+          <ul>
+            <li>Mashed Potato</li>
+            <li>Steamed Veggies</li>
+            <li>Pasta</li>
+            <li>Salad</li>
+            <li>Roasted Potato</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Condiments</h5>
+          <ul>
+            <li>Mayo Awaze</li>
+            <li>Mustard</li>
+          </ul>
         </div>
       </div>
-      <div class="menu-item-price">—</div>
     </div>
   </div>
 
-  <!-- ENTRÉES -->
-  <div class="menu-panel" id="tab-entrees">
-    <p class="menu-category-label">Entrée</p>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Creamy Spinach Chicken</div>
-        <div class="menu-item-desc">Tender pan-seared chicken breasts smothered in a <em>rich garlic cream sauce</em> with spinach and a touch of lemon · <em>No Rice</em></div>
-      </div>
-      <div class="menu-item-price">ETB 1,250</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Pepper Steak</div>
-        <div class="menu-item-desc">Thinly sliced <em>premium tenderloin</em> seared to perfection with a peppery sauce · served with mash or steamed veggies</div>
-      </div>
-      <div class="menu-item-price">ETB 1,500</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Roasted Beef</div>
-        <div class="menu-item-desc"><em>Slow-roasted beef shoulders</em> with rich gravy · served with mashed potato</div>
-      </div>
-      <div class="menu-item-price">ETB 1,400</div>
-    </div>
-  </div>
-
-  <!-- HABESHA CORNER -->
-  <div class="menu-panel" id="tab-habesha">
-    <p class="menu-category-label">Habesha Corner</p>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Tibs</div>
-        <div class="menu-item-desc">Ethiopian-style <em>stir-fried beef</em> seasoned with awaze · served with a side salad</div>
-      </div>
-      <div class="menu-item-price">ETB 1,200</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Shero</div>
-        <div class="menu-item-desc">Creamy <em>chickpea powder</em> stewed with traditional Ethiopian spices · served with a side salad</div>
-      </div>
-      <div class="menu-item-price">ETB 500</div>
-    </div>
-  </div>
-
-  <!-- PASTA -->
-  <div class="menu-panel" id="tab-pasta">
-    <p class="menu-category-label">Pasta · Choice of Rigatoni or Linguine</p>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Creamy Cajun Chicken Pasta</div>
-        <div class="menu-item-desc">Grilled chicken breast seasoned with herbs in a <em>Cajun cream sauce</em> · choice of pasta</div>
-      </div>
-      <div class="menu-item-price">ETB 1,200</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Creamy Cajun Mushroom Pasta</div>
-        <div class="menu-item-desc">Hearty mushrooms in a <em>spiced Cajun cream sauce</em> · choice of pasta</div>
-      </div>
-      <div class="menu-item-price">ETB 850</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Pesto Pasta</div>
-        <div class="menu-item-desc">Traditional <em>basil pesto</em> with toasted nuts and Parmesan · choice of pasta</div>
-      </div>
-      <div class="menu-item-price">ETB 850</div>
-    </div>
-  </div>
-
-  <!-- SANDWICHES -->
-  <div class="menu-panel" id="tab-sandwiches">
-    <p class="menu-category-label">Sandwiches & Burgers</p>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Grilled Chicken Panini</div>
-        <div class="menu-item-desc">Pressed panini with seasoned <em>grilled chicken</em></div>
-      </div>
-      <div class="menu-item-price">ETB 750</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Roasted Beef Panini</div>
-        <div class="menu-item-desc">Pressed panini with <em>slow-roasted beef</em></div>
-      </div>
-      <div class="menu-item-price">ETB 750</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Beef Burger</div>
-        <div class="menu-item-desc">Classic beef patty with <em>lettuce, tomato & onion</em></div>
-      </div>
-      <div class="menu-item-price">ETB 800</div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Cheeseburger</div>
-        <div class="menu-item-desc">Beef patty with melted cheese, <em>lettuce, tomato & onion</em></div>
-      </div>
-      <div class="menu-item-price">ETB 950</div>
-    </div>
-  </div>
-
-  <!-- Sides & Condiments Note -->
-  <div class="menu-note-box">
-    <h4>Sides & Condiments</h4>
-    <div class="menu-note-cols">
-      <div class="menu-note-col">
-        <h5>Side Options</h5>
-        <ul>
-          <li>Mashed Potato</li>
-          <li>Steamed Veggies</li>
-          <li>Pasta</li>
-          <li>Salad</li>
-          <li>Roasted Potato</li>
-        </ul>
-      </div>
-      <div class="menu-note-col">
-        <h5>Condiments</h5>
-        <ul>
-          <li>Mayo Awaze</li>
-          <li>Mustard</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+  <!-- Scroll to top cocktail -->
+  <button class="scroll-top-btn" aria-label="Scroll to top">
+    🍸
+  </button>
 </section>
 <!-- END MENU SECTION -->
 
-
-<section id="gallery" class="gallery-fullscreen">
-
-  <div class="gallery-slide active">
-    <img src="images/gallery4.jpg" alt="Restaurant Interior">
-    <div class="gallery-caption">Elegant Interior</div>
+<section id="gallery" class="section gallery-new">
+  <!-- Section Header -->
+  <div class="gallery-header">
+    <h2 class="section-title">What's Happening</h2>
+    <p class="gallery-subtitle">Events · Ambiance · Flavour · Moments</p>
   </div>
 
-  <div class="gallery-slide">
-    <img src="images/gallery3.jpg" alt="Cocktail Bar">
-    <div class="gallery-caption">Signature Cocktails</div>
+  <!-- Upcoming Events Strip (unchanged, same as before) -->
+  <div class="events-strip-wrapper">
+    <div class="events-strip">
+      <div class="event-card">
+        <div class="event-date">MAY 16</div>
+        <div class="event-info">
+          <h3>Acoustic Friday</h3>
+          <p>Live soulful performances from 7 PM</p>
+          <button class="btn btn-primary event-book-btn">Book a Table</button>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">MAY 23</div>
+        <div class="event-info">
+          <h3>Karaoke Night</h3>
+          <p>Take the stage – prizes for best performance</p>
+          <button class="btn btn-primary event-book-btn">Book a Table</button>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">JUN 01</div>
+        <div class="event-info">
+          <h3>Open Mic Special</h3>
+          <p>Featuring rising local artists</p>
+          <button class="btn btn-primary event-book-btn">Book a Table</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="gallery-slide">
-    <img src="images/gallery2.jpg" alt="Live Music Night">
-    <div class="gallery-caption">Live Entertainment</div>
+  <!-- Gallery Filter Tabs -->
+  <div class="gallery-filter-tabs">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ambiance">Ambiance</button>
+    <button class="filter-btn" data-filter="food">Food</button>
+    <button class="filter-btn" data-filter="events">Iconic Moments</button>
   </div>
 
-  <div class="gallery-slide">
-    <img src="images/gallery4.jpg" alt="Dining Area">
-    <div class="gallery-caption">Dining Experience</div>
+  <!-- Mosaic Gallery Container -->
+  <div class="gallery-mosaic">
+    <!-- AMBIANCE -->
+    <div class="mosaic-item wide" data-category="ambiance">
+      <img src="images/gallery4.jpg" alt="Elegant Interior" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Ambiance</span>
+        <h4>Elegant Interior</h4>
+      </div>
+    </div>
+    <div class="mosaic-item tall" data-category="ambiance">
+      <img src="images/gallery3.jpg" alt="Cocktail Bar" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Ambiance</span>
+        <h4>Cocktail Lounge</h4>
+      </div>
+    </div>
+    <div class="mosaic-item" data-category="ambiance">
+      <img src="images/herobackground.jpg" alt="Night Vibe" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Ambiance</span>
+        <h4>Night Vibe</h4>
+      </div>
+    </div>
+
+    <!-- FOOD -->
+    <div class="mosaic-item tall" data-category="food">
+      <img src="images/gallery2.jpg" alt="Signature Dish" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Food</span>
+        <h4>Signature Dish</h4>
+      </div>
+    </div>
+    <div class="mosaic-item" data-category="food">
+      <img src="images/gallery4.jpg" alt="Chef's Special" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Food</span>
+        <h4>Chef's Special</h4>
+      </div>
+    </div>
+    <!-- Example video thumbnail (Food) -->
+    <div class="mosaic-item wide video-item" data-category="food" data-video-id="YOUR_YOUTUBE_VIDEO_ID">
+      <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID/hqdefault.jpg" alt="Burger Perfection Video" loading="lazy">
+      <div class="mosaic-overlay video-play-overlay">
+        <span class="play-icon">▶</span>
+        <span class="item-category">Food</span>
+        <h4>Burger Perfection</h4>
+      </div>
+    </div>
+
+    <!-- ICONIC EVENTS -->
+    <div class="mosaic-item wide" data-category="events">
+      <img src="images/gallery4.jpg" alt="DJ Night" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Iconic Events</span>
+        <h4>DJ Night</h4>
+      </div>
+    </div>
+    <div class="mosaic-item" data-category="events">
+      <img src="images/gallery3.jpg" alt="Live Performance" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="item-category">Iconic Events</span>
+        <h4>Live Performance</h4>
+      </div>
+    </div>
+    <!-- Example video thumbnail (Events) -->
+    <div class="mosaic-item tall video-item" data-category="events" data-video-id="YOUR_SECOND_VIDEO_ID">
+      <img src="https://img.youtube.com/vi/YOUR_SECOND_VIDEO_ID/hqdefault.jpg" alt="Karaoke Champions" loading="lazy">
+      <div class="mosaic-overlay video-play-overlay">
+        <span class="play-icon">▶</span>
+        <span class="item-category">Iconic Events</span>
+        <h4>Karaoke Champions</h4>
+      </div>
+    </div>
   </div>
 
-  <button class="gallery-next" aria-label="Next slide">
-    <span class="arrow">›</span>
-  </button>
+  <!-- Lightbox for Images (hidden) -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
 
+  <!-- Video Modal (hidden) -->
+  <div class="video-modal" id="videoModal">
+    <button class="video-modal-close" id="videoModalClose">&times;</button>
+    <div class="video-modal-content">
+      <iframe id="videoIframe" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
 </section>
 
 <section id="contact" class="section contact">
-  <h2 class="section-title dark-title">Visit Us</h2>
+  <div class="contact-badge">Get in Touch</div>
+  <h2 class="section-title dark-title">Visit The Spot</h2>
+  <p class="contact-intro">We can't wait to host you. Drop by, give us a call, or follow the vibe online.</p>
 
   <div class="contact-wrapper">
+    <!-- Main Contact Card (no lag, smooth pop) -->
     <div class="contact-card">
-      <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Bole Brass, Addis Ababa, Ethiopia</p>
-      <p>
-        <i class="fas fa-directions"></i> <strong>Directions:</strong>
-        <a href="https://maps.google.com" target="_blank">Get Directions on Google Maps</a>
-      </p>
-      <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> 
-        <a href="tel:+251990555511">+251 99 055 5511</a>
-      </p>
-      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> 
-        <a href="mailto:info@thespotaddis.com">info@thespotaddis.com</a>
-      </p>
+      <div class="contact-card-inner">
+        <!-- Info Block -->
+        <div class="contact-info-block">
+          <div class="contact-line">
+            <div class="contact-icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-line-text">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Bole Brass, Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
 
-      <hr class="contact-divider">
+          <div class="contact-line">
+            <div class="contact-icon-circle"><i class="fas fa-directions"></i></div>
+            <div class="contact-line-text">
+              <span class="contact-label">Directions</span>
+              <a href="https://maps.google.com" target="_blank" class="contact-link">Open in Google Maps →</a>
+            </div>
+          </div>
 
-      <div class="opening-hours">
-        <h3>Opening Hours</h3>
-        <p>Monday – Thursday: 11:00 AM – 10:00 PM</p>
-        <p>Friday – Saturday: 11:00 AM – 1:00 AM</p>
-        <p>Sunday: 12:00 PM – 9:00 PM</p>
+          <div class="contact-line">
+            <div class="contact-icon-circle"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-line-text">
+              <span class="contact-label">Phone</span>
+              <a href="tel:+251990555511" class="contact-link">+251 99 055 5511</a>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="contact-icon-circle"><i class="fas fa-envelope"></i></div>
+            <div class="contact-line-text">
+              <span class="contact-label">Email</span>
+              <a href="mailto:info@thespotaddis.com" class="contact-link">info@thespotaddis.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="contact-divider-new">
+          <span class="divider-dot"></span>
+          <span class="divider-line"></span>
+          <span class="divider-icon"><i class="fas fa-clock"></i></span>
+          <span class="divider-line"></span>
+          <span class="divider-dot"></span>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="opening-hours-new">
+          <h3>Opening Hours</h3>
+          <div class="hours-grid">
+            <div class="hour-row">
+              <span class="day">Mon – Thu</span>
+              <span class="time">11:00 AM – 10:00 PM</span>
+            </div>
+            <div class="hour-row highlight-row">
+              <span class="day">Fri – Sat</span>
+              <span class="time">11:00 AM – 1:00 AM</span>
+            </div>
+            <div class="hour-row">
+              <span class="day">Sunday</span>
+              <span class="time">12:00 PM – 9:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Form (inline) -->
+        <div class="feedback-box">
+          <h3>💬 Quick Feedback</h3>
+          <form id="feedbackForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Feedback from The Spot Website">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="form-row">
+              <input type="text" name="Name" placeholder="Your name" required>
+              <input type="email" name="Email" placeholder="Email (optional)">
+            </div>
+            <div class="star-rating">
+              <span>Rating:</span>
+              <label><input type="radio" name="Rating" value="1">⭐</label>
+              <label><input type="radio" name="Rating" value="2">⭐⭐</label>
+              <label><input type="radio" name="Rating" value="3">⭐⭐⭐</label>
+              <label><input type="radio" name="Rating" value="4">⭐⭐⭐⭐</label>
+              <label><input type="radio" name="Rating" value="5">⭐⭐⭐⭐⭐</label>
+            </div>
+            <textarea name="Message" rows="2" placeholder="Your feedback..."></textarea>
+            <button type="submit" class="btn btn-primary submit-btn" style="width:100%;">Send Feedback</button>
+          </form>
+          <div class="form-success" id="feedbackSuccess" style="display:none;">
+            <span style="font-size:1.8rem;">🙏</span>
+            <h3>Thanks for your feedback!</h3>
+            <p>We really appreciate your thoughts.</p>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links-new">
+          <a href="#" class="social-pill" aria-label="TikTok"><i class="fab fa-tiktok"></i> <span>TikTok</span></a>
+          <a href="#" class="social-pill" aria-label="Facebook"><i class="fab fa-facebook-f"></i> <span>Facebook</span></a>
+          <a href="#" class="social-pill" aria-label="Instagram"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
+          <a href="#" class="social-pill" aria-label="Twitter"><i class="fab fa-twitter"></i> <span>Twitter</span></a>
+        </div>
       </div>
+    </div>
 
-      <div class="social-links">
-        <a href="#" class="social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="#" class="social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <!-- Google Map Embed -->
+    <div class="map-container">
+      <!-- Replace the src with your own Google Maps embed code -->
+      <iframe
+        src="https://maps.google.com/maps?q=Bole+Brass+Addis+Ababa&output=embed"
+        width="100%"
+        height="280"
+        style="border:0; border-radius:20px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- Fun Decorative Element -->
+    <div class="contact-fun-element">
+      <div class="fun-circle">
+        <span class="fun-emoji">🍸</span>
       </div>
+      <p class="fun-text">Cocktails & Good Times Await</p>
     </div>
   </div>
 </section>
@@ -355,29 +560,189 @@
 
 <footer class="footer">
   <div class="footer-container">
+    <!-- Brand & tagline -->
     <div class="footer-brand">
       <h3>The Spot</h3>
       <p>Kitchen & Cocktail Lounge</p>
+      <div class="footer-decor">
+        <span>✦</span>
+        <span>✦</span>
+        <span>✦</span>
+      </div>
     </div>
+
+    <!-- Navigation links -->
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
+
+    <!-- Social icons -->
     <div class="footer-social">
-      <a href="#" aria-label="TikTok" class="social-icon"><i class="fab fa-tiktok"></i></a>
-      <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="TikTok" class="social-bubble">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="#" aria-label="Facebook" class="social-bubble">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#" aria-label="Instagram" class="social-bubble">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" aria-label="Twitter" class="social-bubble">
+        <i class="fab fa-twitter"></i>
+      </a>
     </div>
   </div>
+
   <div class="footer-bottom">
     <p>&copy; 2026 The Spot Restaurant & Bar. All rights reserved. Designed by 
-      <a href="https://petrosworku-portfolio.netlify.app/">Petros</a>
+      <a href="https://petrosworku-portfolio.netlify.app/" target="_blank" rel="noopener">Petros</a>
     </p>
   </div>
 </footer>
+
+<!-- Preorder Modal – Simple & Clean -->
+<div class="modal-overlay" id="preorderModal">
+  <div class="modal-container">
+    <button class="modal-close" id="closePreorderModal">&times;</button>
+    <h2 class="modal-title">Preorder &amp; Skip the Wait</h2>
+    <p class="modal-subtitle">
+      👉 <a href="#menu" id="browseMenuLink" class="inline-link">Browse the menu</a>, then type your order below. We'll call to confirm.
+    </p>
+
+    <form id="preorderForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Preorder Request">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="form-group">
+        <label for="p-name">Your Name *</label>
+        <input type="text" id="p-name" name="Name" required placeholder="John Doe">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="p-email">Email *</label>
+          <input type="email" id="p-email" name="Email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="p-phone">Phone *</label>
+          <input type="tel" id="p-phone" name="Phone" required placeholder="+251 90...">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="p-pickup-date">Pickup Date *</label>
+          <input type="date" id="p-pickup-date" name="Pickup_Date" required>
+        </div>
+        <div class="form-group">
+          <label for="p-pickup-time">Pickup Time *</label>
+          <input type="time" id="p-pickup-time" name="Pickup_Time" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="p-order">Your Order *</label>
+        <textarea id="p-order" name="Order" rows="4" required
+          placeholder="List the dishes &amp; quantities you'd like, e.g.:&#10;1 Creamy Spinach Chicken&#10;2 Pepper Steak&#10;1 Beef Burger"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="p-message">Special Requests (optional)</label>
+        <textarea id="p-message" name="Message" rows="2" placeholder="Dietary needs, extra sauces, etc."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary submit-btn">Send Preorder Request</button>
+      <p class="form-note">We'll give you a quick call to confirm.</p>
+    </form>
+
+    <!-- Success message -->
+    <div class="form-success" id="preorderSuccess" style="display: none;">
+      <span style="font-size:2rem;">🥡</span>
+      <h3>Preorder Received!</h3>
+      <p>We'll call you shortly to confirm order and pickup time. See you soon!</p>
+      <button class="btn btn-outline" id="closePreorderSuccess">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reservation Modal -->
+<div class="modal-overlay" id="reservationModal">
+  <div class="modal-container">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h2 class="modal-title">Reserve a Table</h2>
+    <p class="modal-subtitle">Fill in your details and we'll confirm shortly</p>
+
+    <form id="reservationForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+      <!-- FormSubmit hidden fields -->
+      <input type="hidden" name="_subject" value="New Reservation from The Spot Website">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="#reservationModal">
+
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="Name" required placeholder="John Doe">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="Email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="Phone" required placeholder="+251 90...">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Date *</label>
+          <input type="date" id="date" name="Date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Time *</label>
+          <input type="time" id="time" name="Time" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="guests">Number of Guests *</label>
+        <select id="guests" name="Guests" required>
+          <option value="">Select...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9+">9+</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Special Requests (optional)</label>
+        <textarea id="message" name="Message" rows="3" placeholder="Birthday, window seat, etc."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary submit-btn">Send Reservation Request</button>
+      <p class="form-note">We’ll confirm via email or phone.</p>
+    </form>
+
+    <!-- Success message (hidden by default) -->
+    <div class="form-success" id="formSuccess" style="display: none;">
+      <span style="font-size: 2rem;">🍸</span>
+      <h3>Thank You!</h3>
+      <p>Your reservation request has been received. We'll confirm shortly.</p>
+      <button class="btn btn-outline" id="closeSuccess">Close</button>
+    </div>
+  </div>
+</div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <script src="js/script.js"></script>
