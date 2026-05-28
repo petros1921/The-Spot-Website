@@ -262,6 +262,7 @@ feedbackForm.addEventListener('submit', async function(e) {
   }
 });
 
+
 /* ── Gallery Filtering ── */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const mosaicItems = document.querySelectorAll('.mosaic-item');
@@ -283,6 +284,7 @@ filterBtns.forEach(btn => {
 
 // Trigger 'all' on load
 document.querySelector('.filter-btn.active').click();
+
 
 /* ── Lightbox for Images ── */
 const lightbox = document.getElementById('lightbox');
@@ -375,4 +377,12 @@ eventBookBtns.forEach(btn => {
       document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
     }
   });
+});
+
+const burger = document.getElementById('burger');
+const navbar = document.getElementById('navbar');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  navbar.classList.toggle('active');
 });
