@@ -711,6 +711,26 @@ document.addEventListener('DOMContentLoaded', () => {
   renderEvents();
   renderGallery();
 });
+// Burger toggle (you may already have this part)
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burger');
+  const navbar = document.getElementById('navbar');
+  if (burger && navbar) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      navbar.classList.toggle('active');
+    });
+  }
+
+  // ✅ NEW: Close menu when any nav link is clicked
+  const navLinks = document.querySelectorAll('#navbar a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      navbar.classList.remove('active');
+    });
+  });
+});
 </script>
 </body>
 </html>
