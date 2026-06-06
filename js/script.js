@@ -52,32 +52,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     appearOnScroll.observe(fader);
   });
 
-// =========================
-// GALLERY SLIDER
-// =========================
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".gallery-slide");
-  const nextBtn = document.querySelector(".gallery-next");
-
-  let current = 0;
-
-  function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-  }
-
-  function nextSlide() {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }
-
-  // auto change every 5 seconds
-  setInterval(nextSlide, 5000);
-
-  // next button
-  nextBtn.addEventListener("click", nextSlide);
-});
-
 // Sides toggle
 const sidesToggle = document.querySelector('.sides-toggle');
 const sidesBox = document.querySelector('.sides-box');
@@ -130,47 +104,20 @@ modal.addEventListener('click', (e) => {
   if (e.target === modal) closeReservationModal();
 });
 
-// Form submission handling (using FormSubmit)
-reservationForm.addEventListener('submit', (e) => {
-  // FormSubmit will handle the actual submission,
-  // but we show success message after a short delay.
-  // Since FormSubmit redirects, we prevent the default redirect and use AJAX? 
-  // Actually FormSubmit can work without redirect; we use _next to stay on page.
-  // We'll show the success message after the form is submitted.
-  // The _next parameter with a hash will make FormSubmit redirect to the same page.
-  // So after submission, the page reloads with modal still closed.
-  // Better: let FormSubmit do its thing, but we'll listen for the page load if _next is set.
-  // Simpler alternative: we can use AJAX to prevent reload, but that's more complex.
-  // For now, we'll just show the success message before submit (optimistic).
-  // Actually, we'll just let it submit and reload; we can detect that with a parameter.
-  // But the simplest free method: after submit, FormSubmit redirects to the _next URL.
-  // If we set _next to a "thank-you" page, it'd work. We can create a #thankyou section.
-  // Let's adjust: we'll set _next to the same page with a query param "?reserved=1".
-  // Then on page load, we check for that param and show success.
-  // We'll modify the _next hidden field in HTML to: <input type="hidden" name="_next" value="https://yourdomain.com/?reserved=1">
-  // For now, just do a simple alert or we can hide form and show success after a timeout.
-  // FormSubmit's default behavior will redirect. To avoid that, we can use AJAX (fetch) with FormData.
-  // But that's more advanced. I'll provide a hybrid: use the form's onsubmit to show success and prevent default, then use fetch to submit in background.
-  // Let's implement fetch for a smooth experience without page reload.
-});
 
 // Using fetch to submit the form and show success without redirect
 reservationForm.addEventListener('submit', async function(e) {
-  e.preventDefault(); // Stop the default redirect
-
+  e.preventDefault();
   const formData = new FormData(reservationForm);
-  
   try {
     const response = await fetch(reservationForm.action, {
       method: 'POST',
       body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
+      headers: { 'Accept': 'application/json' },
+      redirect: 'follow'   // <-- add this
     });
-
-    if (response.ok) {
-      // Hide form, show success
+    // FormSubmit returns a 200 HTML page on success, even after redirect
+    if (response.ok || response.redirected) {
       reservationForm.style.display = 'none';
       formSuccess.style.display = 'block';
     } else {
@@ -225,16 +172,18 @@ preorderForm.addEventListener('submit', async function(e) {
     const response = await fetch(preorderForm.action, {
       method: 'POST',
       body: formData,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Accept': 'application/json' },
+      redirect: 'follow'   
     });
-    if (response.ok) {
+    // FormSubmit returns a 200 HTML page on success, even after redirect
+    if (response.ok || response.redirected) {
       preorderForm.style.display = 'none';
-      preorderSuccess.style.display = 'block';
+      formSuccess.style.display = 'block';
     } else {
-      alert('Something went wrong. Please try again or call us.');
+      alert('Something went wrong. Please try again or call us directly.');
     }
   } catch (error) {
-    alert('Network error. Please try again.');
+    alert('Network error. Please check your connection and try again.');
   }
 });
 
@@ -249,38 +198,39 @@ feedbackForm.addEventListener('submit', async function(e) {
     const response = await fetch(feedbackForm.action, {
       method: 'POST',
       body: formData,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Accept': 'application/json' },
+      redirect: 'follow'   // <-- add this
     });
-    if (response.ok) {
+    // FormSubmit returns a 200 HTML page on success, even after redirect
+    if (response.ok || response.redirected) {
       feedbackForm.style.display = 'none';
-      feedbackSuccess.style.display = 'block';
+      formSuccess.style.display = 'block';
     } else {
-      alert('Something went wrong. Please try again.');
+      alert('Something went wrong. Please try again or call us directly.');
     }
   } catch (error) {
-    alert('Network error. Please try again.');
+    alert('Network error. Please check your connection and try again.');
   }
 });
 
-
 /* ── Gallery Filtering ── */
-const filterBtns = document.querySelectorAll('.filter-btn');
-const mosaicItems = document.querySelectorAll('.mosaic-item');
+// const filterBtns = document.querySelectorAll('.filter-btn');
+// const mosaicItems = document.querySelectorAll('.mosaic-item');
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-    mosaicItems.forEach(item => {
-      if (filter === 'all' || item.getAttribute('data-category') === filter) {
-        item.classList.add('show');
-      } else {
-        item.classList.remove('show');
-      }
-    });
-  });
-});
+// filterBtns.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     filterBtns.forEach(b => b.classList.remove('active'));
+//     btn.classList.add('active');
+//     const filter = btn.getAttribute('data-filter');
+//     mosaicItems.forEach(item => {
+//       if (filter === 'all' || item.getAttribute('data-category') === filter) {
+//         item.classList.add('show');
+//       } else {
+//         item.classList.remove('show');
+//       }
+//     });
+//   });
+// });
 
 // Trigger 'all' on load
 document.querySelector('.filter-btn.active').click();
@@ -379,10 +329,23 @@ eventBookBtns.forEach(btn => {
   });
 });
 
-const burger = document.getElementById('burger');
-const navbar = document.getElementById('navbar');
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burger');
+  const navbar = document.getElementById('navbar');
 
-burger.addEventListener('click', () => {
-  burger.classList.toggle('active');
-  navbar.classList.toggle('active');
+  if (burger && navbar) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      navbar.classList.toggle('active');
+    });
+
+    // Close menu when a nav link is clicked
+    const navLinks = document.querySelectorAll('#navbar a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        navbar.classList.remove('active');
+      });
+    });
+  }
 });

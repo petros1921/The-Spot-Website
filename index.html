@@ -25,7 +25,11 @@
     </nav>
 
     <!-- ✅ Add this button -->
-  <button class="burger" id="burger" aria-label="Toggle menu">
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
 <section class="hero">
@@ -530,7 +534,6 @@
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<script src="js/script.js"></script>
 
 <script>
   // ── Prismic helpers ──────────────────────────────
@@ -558,40 +561,47 @@ function getImageUrl(imageField, width = 400) {
 
 // ── Render Menu ──────────────────────────────────
 async function renderMenu() {
-  const dishes = await fetchDocuments('dish');
+  try {
+    const dishes = await fetchDocuments('dish');
   
-  // Clear all panels
-  ['starters','entrees','habesha','pasta','sandwiches'].forEach(cat => {
-    const panel = document.getElementById(`tab-${cat}`);
-    if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
-  });
+    // Clear all panels
+    ['starters','entrees','habesha','pasta','sandwiches'].forEach(cat => {
+      const panel = document.getElementById(`tab-${cat}`);
+      if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
+    });
 
-  // Build a card for each dish
-  dishes.forEach(dish => {
-    const cat = dish.data.category;
-    const panel = document.getElementById(`tab-${cat}`);
-    if (!panel) return;
+    // Build a card for each dish
+    dishes.forEach(dish => {
+      const cat = dish.data.category;
+      const panel = document.getElementById(`tab-${cat}`);
+      if (!panel) return;
 
-    const card = document.createElement('div');
-    card.className = 'menu-card';
-
-    const imgHtml = dish.data.image?.url
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+      
+      const imgHtml = dish.data.image?.url
       ? `<img src="${getImageUrl(dish.data.image, 200)}" alt="${dish.data.name}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-right:15px;">`
       : '';
+      const descText = dish.data.description?.[0]?.text || '';
 
-    const descText = dish.data.description?.[0]?.text || '';
-
-    card.innerHTML = `
-      ${imgHtml}
-      <div class="menu-card-left">
-        <div class="menu-item-name">${dish.data.name}</div>
-        <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-      </div>
-      <div class="menu-item-price">ETB ${dish.data.price}</div>
-    `;
-    panel.appendChild(card);
-  });
-}
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="menu-card-left">
+          <div class="menu-item-name">${dish.data.name}</div>
+          <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        </div>
+        <div class="menu-item-price">ETB ${dish.data.price}</div>
+        `;
+        panel.appendChild(card);
+      });
+    } catch (err) {
+      console.error('Menu load error:', err);
+      const panels = document.querySelectorAll('.menu-panel');
+      panels.forEach(panel => {
+        panel.innerHTML += '<div style="color:#c9922a; text-align:center; padding:20px;">⚠️ Menu temporarily unavailable. Please call us to order.</div>';
+      });
+    }
+  }
 
 // ── Render Events ────────────────────────────────
 async function renderEvents() {
@@ -642,15 +652,16 @@ async function renderGallery() {
       const match = item.data.video_url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
       const videoId = match ? match[1] : null;
       if (videoId) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
         return `
-          <div class="mosaic-item wide video-item show" data-category="${item.data.category}">
-            <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe>
-            <div class="mosaic-overlay video-play-overlay">
-              <span class="play-icon">▶</span>
-              <span class="item-category">${item.data.category}</span>
-              <h4>${item.data.title}</h4>
-            </div>
+        <div class="mosaic-item wide video-item show" data-category="${item.data.category}" data-video-id="${videoId}">
+          <img src="${thumbnailUrl}" alt="Video thumbnail" loading="lazy">
+          <div class="mosaic-overlay video-play-overlay">
+            <span class="play-icon">▶</span>
+            <span class="item-category">${item.data.category}</span>
+            <h4>${item.data.title}</h4>
           </div>
+        </div>
         `;
       }
     }
@@ -711,26 +722,18 @@ document.addEventListener('DOMContentLoaded', () => {
   renderEvents();
   renderGallery();
 });
-// Burger toggle (you may already have this part)
-document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.getElementById('burger');
-  const navbar = document.getElementById('navbar');
-  if (burger && navbar) {
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('active');
-      navbar.classList.toggle('active');
-    });
-  }
 
-  // ✅ NEW: Close menu when any nav link is clicked
-  const navLinks = document.querySelectorAll('#navbar a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('active');
-      navbar.classList.remove('active');
-    });
-  });
-});
+function toggleMenu() {
+  const navbar = document.getElementById('navbar');
+  if (navbar.style.maxHeight === '0px' || navbar.style.maxHeight === '') {
+    navbar.style.maxHeight = '350px';
+    navbar.style.padding = '30px 0';
+  } else {
+    navbar.style.maxHeight = '0px';
+    navbar.style.padding = '0';
+  }
+}
 </script>
+<script src="js/script.js"></script>
 </body>
 </html>
