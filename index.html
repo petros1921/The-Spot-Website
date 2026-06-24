@@ -41,7 +41,7 @@
         <p>Elevating Dining & Nightlife in Style</p>
         <div class="hero-buttons">
           <a href="#menu" class="btn btn-primary">View Menu</a>
-          <a href="#" class="btn btn-outline">Reserve a Table</a>
+          <a href="#" class="btn btn-outline" onclick="openReservationModal()">Reserve a Table</a>
           <a href="#menu" class="btn btn-outline" id="preorderBtn">Preorder Now</a>
         </div>
       </div>
@@ -286,7 +286,7 @@
         <!-- Feedback Form (inline) -->
         <div class="feedback-box">
           <h3>💬 Quick Feedback</h3>
-          <form id="feedbackForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+          <form id="feedbackForm" action="javascript:void(0)">
             <input type="hidden" name="_subject" value="New Feedback from The Spot Website">
             <input type="hidden" name="_captcha" value="false">
             <div class="form-row">
@@ -401,7 +401,7 @@
       👉 <a href="#menu" id="browseMenuLink" class="inline-link">Browse the menu</a>, then type your order below. We'll call to confirm.
     </p>
 
-    <form id="preorderForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+    <form id="preorderForm" action="javascript:void(0)">
       <input type="hidden" name="_subject" value="New Preorder Request">
       <input type="hidden" name="_captcha" value="false">
 
@@ -464,12 +464,12 @@
     <h2 class="modal-title">Reserve a Table</h2>
     <p class="modal-subtitle">Fill in your details and we'll confirm shortly</p>
 
-    <form id="reservationForm" action="https://formsubmit.co/petrosworku1996@gmail.com" method="POST">
+     <form id="reservationForm" action="javascript:void(0)">
       <!-- FormSubmit hidden fields -->
-      <input type="hidden" name="_subject" value="New Reservation from The Spot Website">
+      <!-- <input type="hidden" name="_subject" value="New Reservation from The Spot Website">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="#reservationModal">
+      <input type="hidden" name="_next" value="#reservationModal"> -->
 
       <div class="form-group">
         <label for="name">Your Name *</label>
@@ -733,7 +733,115 @@ function toggleMenu() {
     navbar.style.padding = '0';
   }
 }
+function openReservationModal() {
+    const modal = document.getElementById('reservationModal');
+    if (modal) modal.classList.add('active');
+  }
 </script>
 <script src="js/script.js"></script>
+<!-- Supabase library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // ⚙️ Supabase client (renamed to avoid conflict)
+  const supabaseUrl = 'https://hmmhosnwiccayifrxqps.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbWhvc253aWNjYXlpZnJ4cXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Nzk5NzgsImV4cCI6MjA5NjI1NTk3OH0.RYn8LRQYXZNBzr9oRwQzu9UZbKOjwUAO6wi_vHtfOBY';   // ← PUT YOUR NEW KEY HERE
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // 🍸 Open reservation modal
+  function openReservationModal() {
+    const modal = document.getElementById('reservationModal');
+    if (modal) modal.classList.add('active');
+  }
+
+  // 📋 Reservation submission
+  const reservationForm = document.getElementById('reservationForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  reservationForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(reservationForm);
+    const data = {
+      name: formData.get('Name'),
+      email: formData.get('Email'),
+      phone: formData.get('Phone'),
+      date: formData.get('Date'),
+      time: formData.get('Time'),
+      guests: formData.get('Guests'),
+      message: formData.get('Message')
+    };
+
+    console.log('Submitting to Supabase:', data);
+
+    const { error } = await supabaseClient.from('reservations').insert([data]);
+
+    if (error) {
+      console.error('Supabase error:', error);
+      alert('Something went wrong. Please try again.');
+    } else {
+      reservationForm.style.display = 'none';
+      formSuccess.style.display = 'block';
+    }
+  });
+  // 🥡 Preorder form
+const preorderForm = document.getElementById('preorderForm');
+const preorderSuccess = document.getElementById('preorderSuccess');
+
+preorderForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(preorderForm);
+  const data = {
+    name: formData.get('Name'),
+    email: formData.get('Email'),
+    phone: formData.get('Phone'),
+    pickup_date: formData.get('Pickup_Date'),
+    pickup_time: formData.get('Pickup_Time'),
+    order_text: formData.get('Order'),
+    message: formData.get('Message')
+  };
+
+  console.log('Submitting preorder:', data);
+
+  const { error } = await supabaseClient.from('preorders').insert([data]);
+
+  if (error) {
+    console.error('Preorder error:', error);
+    alert('Something went wrong. Please try again.');
+  } else {
+    preorderForm.style.display = 'none';
+    preorderSuccess.style.display = 'block';
+  }
+});
+
+// 💬 Feedback form
+const feedbackForm = document.getElementById('feedbackForm');
+const feedbackSuccess = document.getElementById('feedbackSuccess');
+
+feedbackForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(feedbackForm);
+  const data = {
+    name: formData.get('Name'),
+    email: formData.get('Email') || null,
+    rating: formData.get('Rating') || null,
+    message: formData.get('Message') || null
+  };
+
+  console.log('Submitting feedback:', data);
+
+  const { error } = await supabaseClient.from('feedback').insert([data]);
+
+  if (error) {
+    console.error('Feedback error:', error);
+    alert('Something went wrong. Please try again.');
+  } else {
+    feedbackForm.style.display = 'none';
+    feedbackSuccess.style.display = 'block';
+  }
+});
+</script>
 </body>
 </html>

@@ -72,61 +72,62 @@ scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Reservation modal logic
-const modal = document.getElementById('reservationModal');
-const closeModalBtn = document.getElementById('closeModal');
-const closeSuccessBtn = document.getElementById('closeSuccess');
-const reservationForm = document.getElementById('reservationForm');
-const formSuccess = document.getElementById('formSuccess');
 
-// Open modal: attach to both Reserve buttons
-document.querySelectorAll('a[href="#"]').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.classList.add('active');
-  });
-});
+// // Reservation modal logic
+// const modal = document.getElementById('reservationModal');
+// const closeModalBtn = document.getElementById('closeModal');
+// const closeSuccessBtn = document.getElementById('closeSuccess');
+// const reservationForm = document.getElementById('reservationForm');
+// const formSuccess = document.getElementById('formSuccess');
 
-// Close modal
-function closeReservationModal() {
-  modal.classList.remove('active');
-  // Optional: reset form and show form again, hide success
-  reservationForm.style.display = 'block';
-  formSuccess.style.display = 'none';
-  reservationForm.reset();
-}
+// // Open modal: attach to both Reserve buttons
+// document.querySelectorAll('a[href="#"]').forEach(btn => {
+//   btn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     modal.classList.add('active');
+//   });
+// });
 
-closeModalBtn.addEventListener('click', closeReservationModal);
-closeSuccessBtn.addEventListener('click', closeReservationModal);
+// // Close modal
+// function closeReservationModal() {
+//   modal.classList.remove('active');
+//   // Optional: reset form and show form again, hide success
+//   reservationForm.style.display = 'block';
+//   formSuccess.style.display = 'none';
+//   reservationForm.reset();
+// }
 
-// Close when clicking outside the modal
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) closeReservationModal();
-});
+// closeModalBtn.addEventListener('click', closeReservationModal);
+// closeSuccessBtn.addEventListener('click', closeReservationModal);
+
+// // Close when clicking outside the modal
+// modal.addEventListener('click', (e) => {
+//   if (e.target === modal) closeReservationModal();
+// });
 
 
-// Using fetch to submit the form and show success without redirect
-reservationForm.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const formData = new FormData(reservationForm);
-  try {
-    const response = await fetch(reservationForm.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' },
-      redirect: 'follow'   // <-- add this
-    });
-    // FormSubmit returns a 200 HTML page on success, even after redirect
-    if (response.ok || response.redirected) {
-      reservationForm.style.display = 'none';
-      formSuccess.style.display = 'block';
-    } else {
-      alert('Something went wrong. Please try again or call us directly.');
-    }
-  } catch (error) {
-    alert('Network error. Please check your connection and try again.');
-  }
-});
+// // Using fetch to submit the form and show success without redirect
+// reservationForm.addEventListener('submit', async function(e) {
+//   e.preventDefault();
+//   const formData = new FormData(reservationForm);
+//   try {
+//     const response = await fetch(reservationForm.action, {
+//       method: 'POST',
+//       body: formData,
+//       headers: { 'Accept': 'application/json' },
+//       redirect: 'follow'   // <-- add this
+//     });
+//     // FormSubmit returns a 200 HTML page on success, even after redirect
+//     if (response.ok || response.redirected) {
+//       reservationForm.style.display = 'none';
+//       formSuccess.style.display = 'block';
+//     } else {
+//       alert('Something went wrong. Please try again or call us directly.');
+//     }
+//   } catch (error) {
+//     alert('Network error. Please check your connection and try again.');
+//   }
+// });
 
 /* ── Simple Preorder Modal JS ── */
 const preorderModal = document.getElementById('preorderModal');

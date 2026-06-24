@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Spot Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Montserrat',sans-serif; background:#0b0b0b; color:#f5f5f5; }
+    .container { max-width:1200px; margin:auto; padding:20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:2px solid #c9922a; }
+    h1 { font-family:'Cinzel',serif; color:#c9922a; }
+    .tabs { display:flex; gap:10px; margin:30px 0 20px; }
+    .tab { padding:10px 20px; border:1px solid #3a3020; border-radius:30px; cursor:pointer; color:#aaa; transition:0.3s; }
+    .tab.active { background:#c9922a; border-color:#c9922a; color:#0f0f0f; font-weight:600; }
+    .card { background:#1a1a1a; border:1px solid #2a2010; border-radius:20px; padding:20px; margin-bottom:20px; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
+    th, td { padding:12px; text-align:left; border-bottom:1px solid #2a2a2a; }
+    th { color:#c9922a; font-family:'Cinzel',serif; }
+    .badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.8rem; font-weight:600; }
+    .badge-confirmed { background:#2e7d32; color:#fff; }
+    .badge-unconfirmed { background:#f9a825; color:#000; }
+    .badge-ordered { background:#2e7d32; color:#fff; }
+    .badge-unordered { background:#f9a825; color:#000; }
+    .action-btn { padding:6px 14px; border:1px solid #c9922a; background:transparent; color:#c9922a; border-radius:20px; cursor:pointer; transition:0.3s; font-size:0.8rem; }
+    .action-btn:hover { background:#c9922a; color:#0f0f0f; }
+    .login-box { max-width:400px; margin:100px auto; }
+    input, select { width:100%; padding:12px; margin:8px 0; background:#111; border:1px solid #2a2a2a; border-radius:12px; color:#f0e6d3; font-size:0.9rem; }
+    button { background:#c9922a; color:#0f0f0f; border:none; padding:12px; border-radius:30px; cursor:pointer; font-weight:600; width:100%; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <!-- Login screen -->
+  <div id="loginScreen">
+    <div class="login-box card">
+      <h2 style="text-align:center; font-family:'Cinzel',serif; color:#c9922a;">Admin Login</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="loginBtn">Log In</button>
+      <p id="loginError" style="color:red; text-align:center;"></p>
+    </div>
+  </div>
+
+  <!-- Dashboard (hidden until login) -->
+  <div id="dashboard" class="container hidden">
+    <header>
+      <h1>The Spot Dashboard</h1>
+      <button id="logoutBtn" class="action-btn">Log Out</button>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" data-table="reservations">📅 Reservations</button>
+      <button class="tab" data-table="preorders">🥡 Preorders</button>
+      <button class="tab" data-table="feedback">💬 Feedback</button>
+    </div>
+
+    <!-- Dynamic table container -->
+    <div id="tableContainer"></div>
+  </div>
+
+  <script>
+    // Supabase client (same keys as your website)
+    const supabaseUrl = 'https://hmmhosnwiccayifrxqps.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbWhvc253aWNjYXlpZnJ4cXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Nzk5NzgsImV4cCI6MjA5NjI1NTk3OH0.RYn8LRQYXZNBzr9oRwQzu9UZbKOjwUAO6wi_vHtfOBY';   // use the rotated key!
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+    let currentTable = 'reservations';
+    let currentUser = null;
+
+    // ----- Login / Logout -----
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) {
+        document.getElementById('loginError').textContent = error.message;
+      } else {
+        currentUser = data.user;
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+        loadTable(currentTable);
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+      currentUser = null;
+      document.getElementById('dashboard').classList.add('hidden');
+      document.getElementById('loginScreen').classList.remove('hidden');
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    });
+
+    // ----- Tab switching -----
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentTable = tab.dataset.table;
+        loadTable(currentTable);
+      });
+    });
+
+    // ----- Load and render data -----
+    async function loadTable(tableName) {
+      // Get the authenticated session for RLS
+      const { data: session } = await supabaseClient.auth.getSession();
+      if (!session) return;
+
+      // Fetch data using the authenticated user's token
+      const { data, error } = await supabaseClient.from(tableName)
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const container = document.getElementById('tableContainer');
+      container.innerHTML = renderTable(tableName, data);
+      attachActionButtons(tableName);
+    }
+
+    function renderTable(tableName, rows) {
+      if (rows.length === 0) return '<p>No entries yet.</p>';
+
+      let html = '<table><thead><tr>';
+      // Headers based on table
+      const headers = {
+        reservations: ['Name','Email','Phone','Date','Time','Guests','Message','Status','Action'],
+        preorders: ['Name','Email','Phone','Pickup Date','Pickup Time','Order','Message','Status','Action'],
+        feedback: ['Name','Email','Rating','Message','Date']
+      };
+      headers[tableName].forEach(h => html += `<th>${h}</th>`);
+      html += '</tr></thead><tbody>';
+
+      rows.forEach(row => {
+        html += '<tr>';
+        switch(tableName) {
+          case 'reservations':
+            html += `<td>${row.name}</td><td>${row.email}</td><td>${row.phone}</td>`;
+            html += `<td>${row.date}</td><td>${row.time}</td><td>${row.guests}</td><td>${row.message || ''}</td>`;
+            html += `<td><span class="badge ${row.status === 'confirmed' ? 'badge-confirmed' : 'badge-unconfirmed'}">${row.status || 'unconfirmed'}</span></td>`;
+            html += `<td><button class="action-btn" data-id="${row.id}" data-action="confirm">${row.status === 'confirmed' ? 'Unconfirm' : 'Confirm'}</button></td>`;
+            break;
+          case 'preorders':
+            html += `<td>${row.name}</td><td>${row.email}</td><td>${row.phone}</td>`;
+            html += `<td>${row.pickup_date}</td><td>${row.pickup_time}</td><td>${row.order_text}</td><td>${row.message || ''}</td>`;
+            html += `<td><span class="badge ${row.status === 'ordered' ? 'badge-ordered' : 'badge-unordered'}">${row.status || 'unordered'}</span></td>`;
+            html += `<td><button class="action-btn" data-id="${row.id}" data-action="order">${row.status === 'ordered' ? 'Mark Unordered' : 'Mark Ordered'}</button></td>`;
+            break;
+          case 'feedback':
+            html += `<td>${row.name}</td><td>${row.email || ''}</td><td>${row.rating || ''}</td><td>${row.message || ''}</td><td>${new Date(row.created_at).toLocaleDateString()}</td>`;
+            break;
+        }
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function attachActionButtons(tableName) {
+      document.querySelectorAll('.action-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.dataset.id;
+          const action = btn.dataset.action;
+          let newStatus;
+          if (tableName === 'reservations') {
+            // Toggle status
+            const currentStatus = btn.parentElement.previousElementSibling.textContent.trim().toLowerCase();
+            newStatus = currentStatus === 'confirmed' ? 'unconfirmed' : 'confirmed';
+          } else if (tableName === 'preorders') {
+            const currentStatus = btn.parentElement.previousElementSibling.textContent.trim().toLowerCase();
+            newStatus = currentStatus === 'ordered' ? 'unordered' : 'ordered';
+          }
+
+          const { error } = await supabaseClient.from(tableName)
+            .update({ status: newStatus })
+            .eq('id', id);
+
+          if (!error) {
+            loadTable(tableName); // refresh
+          } else {
+            alert('Update failed.');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
