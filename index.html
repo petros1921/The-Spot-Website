@@ -24,7 +24,7 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- ✅ Add this button -->
+    <!-- Hamburger button -->
     <button class="burger" id="burger" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -42,7 +42,7 @@
         <div class="hero-buttons">
           <a href="#menu" class="btn btn-primary">View Menu</a>
           <a href="#" class="btn btn-outline" onclick="openReservationModal()">Reserve a Table</a>
-          <a href="#menu" class="btn btn-outline" id="preorderBtn">Preorder Now</a>
+          <a href="#" class="btn btn-outline" onclick="openPreorderModal()">Preorder Now</a>
         </div>
       </div>
     </div>
@@ -109,26 +109,18 @@
 
   <!-- Menu panels container -->
   <div class="menu-panels">
-    <!-- STARTERS -->
     <div class="menu-panel active" id="tab-starters">
       <p class="menu-category-label">🥟 Starters</p>
     </div>
-    <!-- ENTRÉES -->
     <div class="menu-panel" id="tab-entrees">
       <p class="menu-category-label">🥩 Entrée</p> 
     </div>
-
-    <!-- HABESHA CORNER -->
     <div class="menu-panel" id="tab-habesha">
       <p class="menu-category-label">🇪🇹 Habesha Corner</p>
     </div>
-
-    <!-- PASTA -->
     <div class="menu-panel" id="tab-pasta">
       <p class="menu-category-label">🍝 Pasta · Rigatoni or Linguine</p>
     </div>
-
-    <!-- SANDWICHES -->
     <div class="menu-panel" id="tab-sandwiches">
       <p class="menu-category-label">🍔 Sandwiches & Burgers</p>
     </div>
@@ -160,26 +152,19 @@
     </div>
   </div>
 
-  <!-- Scroll to top cocktail -->
-  <button class="scroll-top-btn" aria-label="Scroll to top">
-    🍸
-  </button>
+  <button class="scroll-top-btn" aria-label="Scroll to top">🍸</button>
 </section>
-<!-- END MENU SECTION -->
 
 <section id="gallery" class="section gallery-new">
-  <!-- Section Header -->
   <div class="gallery-header">
     <h2 class="section-title">What's Happening</h2>
     <p class="gallery-subtitle">Events · Ambiance · Flavour · Moments</p>
   </div>
 
-
   <div class="events-strip-wrapper">
     <div class="events-strip" id="events-strip"></div>
   </div>
 
-  <!-- Gallery Filter Tabs -->
   <div class="gallery-filter-tabs">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="ambiance">Ambiance</button>
@@ -187,11 +172,8 @@
     <button class="filter-btn" data-filter="events">Iconic Moments</button>
   </div>
 
-  <!-- Mosaic Gallery Container -->
   <div class="gallery-mosaic" id="gallery-mosaic"></div>
-    
 
-  <!-- Lightbox for Images (hidden) -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">&times;</button>
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
@@ -202,7 +184,6 @@
     </div>
   </div>
 
-  <!-- Video Modal (hidden) -->
   <div class="video-modal" id="videoModal">
     <button class="video-modal-close" id="videoModalClose">&times;</button>
     <div class="video-modal-content">
@@ -217,10 +198,8 @@
   <p class="contact-intro">We can't wait to host you. Drop by, give us a call, or follow the vibe online.</p>
 
   <div class="contact-wrapper">
-    <!-- Main Contact Card (no lag, smooth pop) -->
     <div class="contact-card">
       <div class="contact-card-inner">
-        <!-- Info Block -->
         <div class="contact-info-block">
           <div class="contact-line">
             <div class="contact-icon-circle"><i class="fas fa-map-marker-alt"></i></div>
@@ -229,7 +208,6 @@
               <span class="contact-value">Bole Brass, Addis Ababa, Ethiopia</span>
             </div>
           </div>
-
           <div class="contact-line">
             <div class="contact-icon-circle"><i class="fas fa-directions"></i></div>
             <div class="contact-line-text">
@@ -237,7 +215,6 @@
               <a href="https://maps.app.goo.gl/b1QMqYpGMtVzg2ws8" target="_blank" class="contact-link">Open in Google Maps →</a>
             </div>
           </div>
-
           <div class="contact-line">
             <div class="contact-icon-circle"><i class="fas fa-phone-alt"></i></div>
             <div class="contact-line-text">
@@ -245,7 +222,6 @@
               <a href="tel:+251990555511" class="contact-link">+251 99 055 5511</a>
             </div>
           </div>
-
           <div class="contact-line">
             <div class="contact-icon-circle"><i class="fas fa-envelope"></i></div>
             <div class="contact-line-text">
@@ -255,7 +231,6 @@
           </div>
         </div>
 
-        <!-- Divider -->
         <div class="contact-divider-new">
           <span class="divider-dot"></span>
           <span class="divider-line"></span>
@@ -264,7 +239,6 @@
           <span class="divider-dot"></span>
         </div>
 
-        <!-- Opening Hours -->
         <div class="opening-hours-new">
           <h3>Opening Hours</h3>
           <div class="hours-grid">
@@ -283,12 +257,9 @@
           </div>
         </div>
 
-        <!-- Feedback Form (inline) -->
         <div class="feedback-box">
           <h3>💬 Quick Feedback</h3>
-          <form id="feedbackForm" action="javascript:void(0)">
-            <input type="hidden" name="_subject" value="New Feedback from The Spot Website">
-            <input type="hidden" name="_captcha" value="false">
+          <form id="feedbackForm" action="#">
             <div class="form-row">
               <input type="text" name="Name" placeholder="Your name" required>
               <input type="email" name="Email" placeholder="Email (optional)">
@@ -311,7 +282,6 @@
           </div>
         </div>
 
-        <!-- Social Links -->
         <div class="social-links-new">
           <a href="#" class="social-pill" aria-label="TikTok"><i class="fab fa-tiktok"></i> <span>TikTok</span></a>
           <a href="#" class="social-pill" aria-label="Facebook"><i class="fab fa-facebook-f"></i> <span>Facebook</span></a>
@@ -321,9 +291,7 @@
       </div>
     </div>
 
-    <!-- Google Map Embed -->
     <div class="map-container">
-      <!-- Replace the src with your own Google Maps embed code -->
       <iframe
         src="https://maps.google.com/maps?q=Bole+Brass+Addis+Ababa&output=embed"
         width="100%"
@@ -335,7 +303,6 @@
       ></iframe>
     </div>
 
-    <!-- Fun Decorative Element -->
     <div class="contact-fun-element">
       <div class="fun-circle">
         <span class="fun-emoji">🍸</span>
@@ -349,7 +316,6 @@
 
 <footer class="footer">
   <div class="footer-container">
-    <!-- Brand & tagline -->
     <div class="footer-brand">
       <h3>The Spot</h3>
       <p>Kitchen & Cocktail Lounge</p>
@@ -359,32 +325,19 @@
         <span>✦</span>
       </div>
     </div>
-
-    <!-- Navigation links -->
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
-
-    <!-- Social icons -->
     <div class="footer-social">
-      <a href="#" aria-label="TikTok" class="social-bubble">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <a href="#" aria-label="Facebook" class="social-bubble">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#" aria-label="Instagram" class="social-bubble">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="#" aria-label="Twitter" class="social-bubble">
-        <i class="fab fa-twitter"></i>
-      </a>
+      <a href="#" aria-label="TikTok" class="social-bubble"><i class="fab fa-tiktok"></i></a>
+      <a href="#" aria-label="Facebook" class="social-bubble"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" class="social-bubble"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter" class="social-bubble"><i class="fab fa-twitter"></i></a>
     </div>
   </div>
-
   <div class="footer-bottom">
     <p>&copy; 2026 The Spot Restaurant & Bar. All rights reserved. Designed by 
       <a href="https://petrosworku-portfolio.netlify.app/" target="_blank" rel="noopener">Petros</a>
@@ -392,7 +345,7 @@
   </div>
 </footer>
 
-<!-- Preorder Modal – Simple & Clean -->
+<!-- Preorder Modal -->
 <div class="modal-overlay" id="preorderModal">
   <div class="modal-container">
     <button class="modal-close" id="closePreorderModal">&times;</button>
@@ -400,16 +353,11 @@
     <p class="modal-subtitle">
       👉 <a href="#menu" id="browseMenuLink" class="inline-link">Browse the menu</a>, then type your order below. We'll call to confirm.
     </p>
-
-    <form id="preorderForm" action="javascript:void(0)">
-      <input type="hidden" name="_subject" value="New Preorder Request">
-      <input type="hidden" name="_captcha" value="false">
-
+    <form id="preorderForm" action="#">
       <div class="form-group">
         <label for="p-name">Your Name *</label>
         <input type="text" id="p-name" name="Name" required placeholder="John Doe">
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label for="p-email">Email *</label>
@@ -420,7 +368,6 @@
           <input type="tel" id="p-phone" name="Phone" required placeholder="+251 90...">
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label for="p-pickup-date">Pickup Date *</label>
@@ -431,23 +378,17 @@
           <input type="time" id="p-pickup-time" name="Pickup_Time" required>
         </div>
       </div>
-
       <div class="form-group">
         <label for="p-order">Your Order *</label>
-        <textarea id="p-order" name="Order" rows="4" required
-          placeholder="List the dishes &amp; quantities you'd like, e.g.:&#10;1 Creamy Spinach Chicken&#10;2 Pepper Steak&#10;1 Beef Burger"></textarea>
+        <textarea id="p-order" name="Order" rows="4" required placeholder="List the dishes &amp; quantities you'd like, e.g.:&#10;1 Creamy Spinach Chicken&#10;2 Pepper Steak&#10;1 Beef Burger"></textarea>
       </div>
-
       <div class="form-group">
         <label for="p-message">Special Requests (optional)</label>
         <textarea id="p-message" name="Message" rows="2" placeholder="Dietary needs, extra sauces, etc."></textarea>
       </div>
-
       <button type="submit" class="btn btn-primary submit-btn">Send Preorder Request</button>
       <p class="form-note">We'll give you a quick call to confirm.</p>
     </form>
-
-    <!-- Success message -->
     <div class="form-success" id="preorderSuccess" style="display: none;">
       <span style="font-size:2rem;">🥡</span>
       <h3>Preorder Received!</h3>
@@ -463,19 +404,11 @@
     <button class="modal-close" id="closeModal">&times;</button>
     <h2 class="modal-title">Reserve a Table</h2>
     <p class="modal-subtitle">Fill in your details and we'll confirm shortly</p>
-
-     <form id="reservationForm" action="javascript:void(0)">
-      <!-- FormSubmit hidden fields -->
-      <!-- <input type="hidden" name="_subject" value="New Reservation from The Spot Website">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="#reservationModal"> -->
-
+    <form id="reservationForm" action="#">
       <div class="form-group">
         <label for="name">Your Name *</label>
         <input type="text" id="name" name="Name" required placeholder="John Doe">
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label for="email">Email *</label>
@@ -486,7 +419,6 @@
           <input type="tel" id="phone" name="Phone" required placeholder="+251 90...">
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label for="date">Date *</label>
@@ -497,7 +429,6 @@
           <input type="time" id="time" name="Time" required>
         </div>
       </div>
-
       <div class="form-group">
         <label for="guests">Number of Guests *</label>
         <select id="guests" name="Guests" required>
@@ -513,17 +444,13 @@
           <option value="9+">9+</option>
         </select>
       </div>
-
       <div class="form-group">
         <label for="message">Special Requests (optional)</label>
         <textarea id="message" name="Message" rows="3" placeholder="Birthday, window seat, etc."></textarea>
       </div>
-
       <button type="submit" class="btn btn-primary submit-btn">Send Reservation Request</button>
       <p class="form-note">We’ll confirm via email or phone.</p>
     </form>
-
-    <!-- Success message (hidden by default) -->
     <div class="form-success" id="formSuccess" style="display: none;">
       <span style="font-size: 2rem;">🍸</span>
       <h3>Thank You!</h3>
@@ -535,232 +462,242 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
+<!-- External script file (fixed version) -->
+<script src="js/script.js"></script>
+
+<!-- Supabase library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Unified inline script -->
 <script>
-  // ── Prismic helpers ──────────────────────────────
-const repoName = 'the-spot';   // 👈 make sure this is correct
+  // ==============================================
+  // 1. SUPABASE CLIENT (replace with your real key)
+  // ==============================================
+  const supabaseUrl = 'https://hmmhosnwiccayifrxqps.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbWhvc253aWNjYXlpZnJ4cXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Nzk5NzgsImV4cCI6MjA5NjI1NTk3OH0.RYn8LRQYXZNBzr9oRwQzu9UZbKOjwUAO6wi_vHtfOBY';
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-async function getMasterRef() {
-  const res = await fetch(`https://${repoName}.cdn.prismic.io/api/v2`);
-  const data = await res.json();
-  return data.refs.find(ref => ref.isMasterRef).ref;
-}
+  // ==============================================
+  // 2. PRISMIC HELPERS
+  // ==============================================
+  const repoName = 'the-spot';
 
-async function fetchDocuments(type) {
-  const ref = await getMasterRef();
-  const url = `https://${repoName}.cdn.prismic.io/api/v2/documents/search?ref=${ref}&q=[[at(document.type,"${type}")]]&pageSize=100`;
-  const res = await fetch(url);
-  const data = await res.json();
-  return data.results;
-}
+  async function getMasterRef() {
+    const res = await fetch(`https://${repoName}.cdn.prismic.io/api/v2`);
+    const data = await res.json();
+    return data.refs.find(ref => ref.isMasterRef).ref;
+  }
 
-// Helper to get image URL from Prismic (with optional width)
-function getImageUrl(imageField, width = 400) {
-  if (!imageField || !imageField.url) return '';
-  return `${imageField.url}&w=${width}`;
-}
+  async function fetchDocuments(type) {
+    const ref = await getMasterRef();
+    const url = `https://${repoName}.cdn.prismic.io/api/v2/documents/search?ref=${ref}&q=[[at(document.type,"${type}")]]&pageSize=100`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.results;
+  }
 
-// ── Render Menu ──────────────────────────────────
-async function renderMenu() {
-  try {
-    const dishes = await fetchDocuments('dish');
-  
-    // Clear all panels
-    ['starters','entrees','habesha','pasta','sandwiches'].forEach(cat => {
-      const panel = document.getElementById(`tab-${cat}`);
-      if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
-    });
+  function getImageUrl(imageField, width = 400) {
+    if (!imageField || !imageField.url) return '';
+    return `${imageField.url}&w=${width}`;
+  }
 
-    // Build a card for each dish
-    dishes.forEach(dish => {
-      const cat = dish.data.category;
-      const panel = document.getElementById(`tab-${cat}`);
-      if (!panel) return;
-
-      const card = document.createElement('div');
-      card.className = 'menu-card';
-      
-      const imgHtml = dish.data.image?.url
-      ? `<img src="${getImageUrl(dish.data.image, 200)}" alt="${dish.data.name}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-right:15px;">`
-      : '';
-      const descText = dish.data.description?.[0]?.text || '';
-
-      card.innerHTML = `
-        ${imgHtml}
-        <div class="menu-card-left">
-          <div class="menu-item-name">${dish.data.name}</div>
-          <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-        </div>
-        <div class="menu-item-price">ETB ${dish.data.price}</div>
+  // ==============================================
+  // 3. RENDER MENU
+  // ==============================================
+  async function renderMenu() {
+    try {
+      const dishes = await fetchDocuments('dish');
+      ['starters','entrees','habesha','pasta','sandwiches'].forEach(cat => {
+        const panel = document.getElementById(`tab-${cat}`);
+        if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
+      });
+      dishes.forEach(dish => {
+        const cat = dish.data.category;
+        const panel = document.getElementById(`tab-${cat}`);
+        if (!panel) return;
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        const imgHtml = dish.data.image?.url
+          ? `<img src="${getImageUrl(dish.data.image, 200)}" alt="${dish.data.name}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-right:15px;">`
+          : '';
+        const descText = dish.data.description?.[0]?.text || '';
+        card.innerHTML = `
+          ${imgHtml}
+          <div class="menu-card-left">
+            <div class="menu-item-name">${dish.data.name}</div>
+            <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+          </div>
+          <div class="menu-item-price">ETB ${dish.data.price}</div>
         `;
         panel.appendChild(card);
       });
     } catch (err) {
       console.error('Menu load error:', err);
-      const panels = document.querySelectorAll('.menu-panel');
-      panels.forEach(panel => {
-        panel.innerHTML += '<div style="color:#c9922a; text-align:center; padding:20px;">⚠️ Menu temporarily unavailable. Please call us to order.</div>';
-      });
     }
   }
 
-// ── Render Events ────────────────────────────────
-async function renderEvents() {
-  const events = await fetchDocuments('event');
-  const strip = document.getElementById('events-strip');
-  if (!strip) return;
-
-  events.sort((a,b) => new Date(a.data.event_date) - new Date(b.data.event_date));
-
-  strip.innerHTML = events.map(event => {
-    const date = new Date(event.data.event_date);
-    const day = date.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase();
-    const time = date.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-    const img = event.data.image?.url
-      ? `<img src="${getImageUrl(event.data.image, 400)}" alt="${event.data.title}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:10px;">`
-      : '';
-    return `
-      <div class="event-card">
-        ${img}
-        <div class="event-date">${day}</div>
-        <div class="event-info">
-          <h3>${event.data.title}</h3>
-          <p>${event.data.description?.[0]?.text || ''}</p>
-          <button class="btn btn-primary event-book-btn">Book a Table</button>
+  // ==============================================
+  // 4. RENDER EVENTS
+  // ==============================================
+  async function renderEvents() {
+    const events = await fetchDocuments('event');
+    const strip = document.getElementById('events-strip');
+    if (!strip) return;
+    events.sort((a,b) => new Date(a.data.event_date) - new Date(b.data.event_date));
+    strip.innerHTML = events.map(event => {
+      const date = new Date(event.data.event_date);
+      const day = date.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase();
+      const img = event.data.image?.url ? `<img src="${getImageUrl(event.data.image, 400)}" alt="${event.data.title}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:10px;">` : '';
+      return `
+        <div class="event-card">
+          ${img}
+          <div class="event-date">${day}</div>
+          <div class="event-info">
+            <h3>${event.data.title}</h3>
+            <p>${event.data.description?.[0]?.text || ''}</p>
+            <button class="btn btn-primary event-book-btn">Book a Table</button>
+          </div>
         </div>
-      </div>
-    `;
-  }).join('');
-
-  // Re‑attach event listeners for Book buttons
-  document.querySelectorAll('.event-book-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const reservationModal = document.getElementById('reservationModal');
-      if (reservationModal) reservationModal.classList.add('active');
+      `;
+    }).join('');
+    // attach event listeners to the "Book a Table" buttons
+    document.querySelectorAll('.event-book-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('reservationModal')?.classList.add('active');
+      });
     });
-  });
-}
+  }
 
-// ── Render Gallery (with dynamic filter re‑attachment) ──
-async function renderGallery() {
-  const items = await fetchDocuments('gallery_item');
-  const mosaic = document.getElementById('gallery-mosaic');
-  if (!mosaic) return;
+  // ==============================================
+  // 5. RENDER GALLERY (MOSAIC WITH FILTER)
+  // ==============================================
+  async function renderGallery() {
+    const items = await fetchDocuments('gallery_item');
+    const mosaic = document.getElementById('gallery-mosaic');
+    if (!mosaic) return;
 
-  // Build the mosaic HTML
-  mosaic.innerHTML = items.map(item => {
-    if (item.data.is_video && item.data.video_url) {
-      const match = item.data.video_url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-      const videoId = match ? match[1] : null;
-      if (videoId) {
-        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-        return `
-        <div class="mosaic-item wide video-item show" data-category="${item.data.category}" data-video-id="${videoId}">
-          <img src="${thumbnailUrl}" alt="Video thumbnail" loading="lazy">
-          <div class="mosaic-overlay video-play-overlay">
-            <span class="play-icon">▶</span>
+    mosaic.innerHTML = items.map(item => {
+      if (item.data.is_video && item.data.video_url) {
+        const match = item.data.video_url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+        const videoId = match ? match[1] : null;
+        if (videoId) {
+          return `
+            <div class="mosaic-item wide video-item show" data-category="${item.data.category}" data-video-id="${videoId}">
+              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <div class="mosaic-overlay video-play-overlay">
+                <span class="play-icon">▶</span>
+                <span class="item-category">${item.data.category}</span>
+                <h4>${item.data.title}</h4>
+              </div>
+            </div>`;
+        }
+      }
+      const imgUrl = item.data.image?.url ? getImageUrl(item.data.image, 600) : 'images/placeholder.jpg';
+      return `
+        <div class="mosaic-item show" data-category="${item.data.category}">
+          <img src="${imgUrl}" alt="${item.data.title}" loading="lazy">
+          <div class="mosaic-overlay">
             <span class="item-category">${item.data.category}</span>
             <h4>${item.data.title}</h4>
           </div>
-        </div>
-        `;
-      }
-    }
-    const imgUrl = item.data.image?.url ? getImageUrl(item.data.image, 600) : 'images/placeholder.jpg';
-    return `
-      <div class="mosaic-item show" data-category="${item.data.category}">
-        <img src="${imgUrl}" alt="${item.data.title}" loading="lazy">
-        <div class="mosaic-overlay">
-          <span class="item-category">${item.data.category}</span>
-          <h4>${item.data.title}</h4>
-        </div>
-      </div>
-    `;
-  }).join('');
+        </div>`;
+    }).join('');
 
-  // ── Re‑attach filter functionality ──
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      // Remove active class from all buttons
-      filterBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-
-      const filter = this.getAttribute('data-filter');
-      // Get fresh list of mosaic items
-      const allItems = document.querySelectorAll('.mosaic-item');
-
-      allItems.forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-          item.classList.add('show');
-        } else {
-          item.classList.remove('show');
-        }
+    // re-attach filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.mosaic-item').forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.classList.add('show');
+          } else {
+            item.classList.remove('show');
+          }
+        });
       });
+    });
+    document.querySelector('.filter-btn[data-filter="all"]')?.click();
+
+    // re-attach lightbox/video events for dynamic items
+    if (window.attachGalleryInteractions) window.attachGalleryInteractions();
+  }
+
+  // ==============================================
+  // 6. MENU TAB SWITCHING
+  // ==============================================
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
     });
   });
 
-  // Trigger the "All" filter on load (to make sure only .show items are visible)
-  const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-  if (allButton) allButton.click();
-}
+  // ==============================================
+  // 7. HAMBURGER MENU TOGGLE
+  // ==============================================
+  window.toggleMenu = function() {
+    const navbar = document.getElementById('navbar');
+    if (navbar.style.maxHeight === '0px' || navbar.style.maxHeight === '') {
+      navbar.style.maxHeight = '350px';
+      navbar.style.padding = '30px 0';
+    } else {
+      navbar.style.maxHeight = '0px';
+      navbar.style.padding = '0';
+    }
+  };
 
-// ── Menu Tab Switching (keep your existing logic) ──
-const tabs = document.querySelectorAll('.menu-tab');
-const panels = document.querySelectorAll('.menu-panel');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  // ==============================================
+  // 8. MODAL OPENERS & CLOSERS
+  // ==============================================
+  window.openReservationModal = function() {
+    document.getElementById('reservationModal').classList.add('active');
+  };
+  window.openPreorderModal = function() {
+    document.getElementById('preorderModal').classList.add('active');
+  };
+
+  function closeReservationModal() {
+    const modal = document.getElementById('reservationModal');
+    modal.classList.remove('active');
+    document.getElementById('reservationForm').reset();
+    document.getElementById('reservationForm').style.display = 'block';
+    document.getElementById('formSuccess').style.display = 'none';
+  }
+
+  function closePreorderModal() {
+    const modal = document.getElementById('preorderModal');
+    modal.classList.remove('active');
+    document.getElementById('preorderForm').reset();
+    document.getElementById('preorderForm').style.display = 'block';
+    document.getElementById('preorderSuccess').style.display = 'none';
+  }
+
+  document.getElementById('closeModal')?.addEventListener('click', closeReservationModal);
+  document.getElementById('closeSuccess')?.addEventListener('click', closeReservationModal);
+  document.getElementById('reservationModal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeReservationModal();
   });
-});
 
-// ── Initialise everything on page load ────────────
-document.addEventListener('DOMContentLoaded', () => {
-  renderMenu();
-  renderEvents();
-  renderGallery();
-});
+  document.getElementById('closePreorderModal')?.addEventListener('click', closePreorderModal);
+  document.getElementById('closePreorderSuccess')?.addEventListener('click', closePreorderModal);
+  document.getElementById('preorderModal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closePreorderModal();
+  });
 
-function toggleMenu() {
-  const navbar = document.getElementById('navbar');
-  if (navbar.style.maxHeight === '0px' || navbar.style.maxHeight === '') {
-    navbar.style.maxHeight = '350px';
-    navbar.style.padding = '30px 0';
-  } else {
-    navbar.style.maxHeight = '0px';
-    navbar.style.padding = '0';
-  }
-}
-function openReservationModal() {
-    const modal = document.getElementById('reservationModal');
-    if (modal) modal.classList.add('active');
-  }
-</script>
-<script src="js/script.js"></script>
-<!-- Supabase library -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-  // ⚙️ Supabase client (renamed to avoid conflict)
-  const supabaseUrl = 'https://hmmhosnwiccayifrxqps.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbWhvc253aWNjYXlpZnJ4cXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Nzk5NzgsImV4cCI6MjA5NjI1NTk3OH0.RYn8LRQYXZNBzr9oRwQzu9UZbKOjwUAO6wi_vHtfOBY';   // ← PUT YOUR NEW KEY HERE
-  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
-  // 🍸 Open reservation modal
-  function openReservationModal() {
-    const modal = document.getElementById('reservationModal');
-    if (modal) modal.classList.add('active');
-  }
-
-  // 📋 Reservation submission
+  // ==============================================
+  // 9. FORM SUBMISSIONS (Reservation, Preorder, Feedback)
+  // ==============================================
   const reservationForm = document.getElementById('reservationForm');
   const formSuccess = document.getElementById('formSuccess');
-
   reservationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const formData = new FormData(reservationForm);
     const data = {
       name: formData.get('Name'),
@@ -771,24 +708,18 @@ function openReservationModal() {
       guests: formData.get('Guests'),
       message: formData.get('Message')
     };
-
-    console.log('Submitting to Supabase:', data);
-
     const { error } = await supabaseClient.from('reservations').insert([data]);
-
     if (error) {
-      console.error('Supabase error:', error);
-      alert('Something went wrong. Please try again.');
+      console.error('Reservation error:', error);
+      alert('Reservation failed: ' + error.message);
     } else {
       reservationForm.style.display = 'none';
       formSuccess.style.display = 'block';
     }
   });
-  
-  // 🥡 Preorder form submission
+
   const preorderForm = document.getElementById('preorderForm');
   const preorderSuccess = document.getElementById('preorderSuccess');
-  
   preorderForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(preorderForm);
@@ -801,21 +732,18 @@ function openReservationModal() {
       order_text: formData.get('Order'),
       message: formData.get('Message')
     };
-
     const { error } = await supabaseClient.from('preorders').insert([data]);
     if (error) {
       console.error('Preorder error:', error);
-      alert('Something went wrong. Please try again.');
+      alert('Preorder failed: ' + error.message);
     } else {
       preorderForm.style.display = 'none';
       preorderSuccess.style.display = 'block';
     }
   });
-  
-  // 💬 Feedback form submission
+
   const feedbackForm = document.getElementById('feedbackForm');
   const feedbackSuccess = document.getElementById('feedbackSuccess');
-  
   feedbackForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(feedbackForm);
@@ -825,16 +753,24 @@ function openReservationModal() {
       rating: formData.get('Rating') || null,
       message: formData.get('Message') || null
     };
-    
     const { error } = await supabaseClient.from('feedback').insert([data]);
     if (error) {
       console.error('Feedback error:', error);
-      alert('Something went wrong. Please try again.');
+      alert('Feedback failed: ' + error.message);
     } else {
       feedbackForm.style.display = 'none';
       feedbackSuccess.style.display = 'block';
     }
-    });
+  });
+
+  // ==============================================
+  // 10. INITIALISE ON PAGE LOAD
+  // ==============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMenu();
+    renderEvents();
+    renderGallery(); // attachGalleryInteractions is called inside renderGallery after mosaic is built
+  });
 </script>
 </body>
 </html>
