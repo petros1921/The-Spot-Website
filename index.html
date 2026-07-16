@@ -784,64 +784,57 @@ function openReservationModal() {
       formSuccess.style.display = 'block';
     }
   });
-  // 🥡 Preorder form
-const preorderForm = document.getElementById('preorderForm');
-const preorderSuccess = document.getElementById('preorderSuccess');
+  
+  // 🥡 Preorder form submission
+  const preorderForm = document.getElementById('preorderForm');
+  const preorderSuccess = document.getElementById('preorderSuccess');
+  
+  preorderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(preorderForm);
+    const data = {
+      name: formData.get('Name'),
+      email: formData.get('Email'),
+      phone: formData.get('Phone'),
+      pickup_date: formData.get('Pickup_Date'),
+      pickup_time: formData.get('Pickup_Time'),
+      order_text: formData.get('Order'),
+      message: formData.get('Message')
+    };
 
-preorderForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(preorderForm);
-  const data = {
-    name: formData.get('Name'),
-    email: formData.get('Email'),
-    phone: formData.get('Phone'),
-    pickup_date: formData.get('Pickup_Date'),
-    pickup_time: formData.get('Pickup_Time'),
-    order_text: formData.get('Order'),
-    message: formData.get('Message')
-  };
-
-  console.log('Submitting preorder:', data);
-
-  const { error } = await supabaseClient.from('preorders').insert([data]);
-
-  if (error) {
-    console.error('Preorder error:', error);
-    alert('Something went wrong. Please try again.');
-  } else {
-    preorderForm.style.display = 'none';
-    preorderSuccess.style.display = 'block';
-  }
-});
-
-// 💬 Feedback form
-const feedbackForm = document.getElementById('feedbackForm');
-const feedbackSuccess = document.getElementById('feedbackSuccess');
-
-feedbackForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(feedbackForm);
-  const data = {
-    name: formData.get('Name'),
-    email: formData.get('Email') || null,
-    rating: formData.get('Rating') || null,
-    message: formData.get('Message') || null
-  };
-
-  console.log('Submitting feedback:', data);
-
-  const { error } = await supabaseClient.from('feedback').insert([data]);
-
-  if (error) {
-    console.error('Feedback error:', error);
-    alert('Something went wrong. Please try again.');
-  } else {
-    feedbackForm.style.display = 'none';
-    feedbackSuccess.style.display = 'block';
-  }
-});
+    const { error } = await supabaseClient.from('preorders').insert([data]);
+    if (error) {
+      console.error('Preorder error:', error);
+      alert('Something went wrong. Please try again.');
+    } else {
+      preorderForm.style.display = 'none';
+      preorderSuccess.style.display = 'block';
+    }
+  });
+  
+  // 💬 Feedback form submission
+  const feedbackForm = document.getElementById('feedbackForm');
+  const feedbackSuccess = document.getElementById('feedbackSuccess');
+  
+  feedbackForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(feedbackForm);
+    const data = {
+      name: formData.get('Name'),
+      email: formData.get('Email') || null,
+      rating: formData.get('Rating') || null,
+      message: formData.get('Message') || null
+    };
+    
+    const { error } = await supabaseClient.from('feedback').insert([data]);
+    if (error) {
+      console.error('Feedback error:', error);
+      alert('Something went wrong. Please try again.');
+    } else {
+      feedbackForm.style.display = 'none';
+      feedbackSuccess.style.display = 'block';
+    }
+    });
 </script>
 </body>
 </html>
