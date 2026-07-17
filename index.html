@@ -96,21 +96,20 @@
 <section id="menu" class="section menu">
   <h2 class="section-title">Our Menu</h2>
   <p class="menu-subtitle">Crafted with passion · Bole, Addis Ababa</p>
-  <p class="menu-vat">* All prices are exclusive of VAT</p>
+  <p class="menu-vat">* All prices are exclusive of VAT and 5% Service charge</p>
 
   <!-- Tab Navigation -->
   <div class="menu-tabs">
-    <button class="menu-tab active" data-tab="starters">🥟 Starters</button>
+    <button class="menu-tab active" data-tab="starters">🥟 Starter's</button>
     <button class="menu-tab" data-tab="entrees">🥩 Entrée</button>
-    <button class="menu-tab" data-tab="habesha">🇪🇹 Habesha</button>
+    <button class="menu-tab" data-tab="habesha">🇪🇹 Habesha Corner</button>
     <button class="menu-tab" data-tab="pasta">🍝 Pasta</button>
-    <button class="menu-tab" data-tab="sandwiches">🍔 Sandwiches</button>
+    <button class="menu-tab" data-tab="Salad / Sandwich">🥗 Salad & 🥪 Sandwich</button>
   </div>
-
-  <!-- Menu panels container -->
+  
   <div class="menu-panels">
     <div class="menu-panel active" id="tab-starters">
-      <p class="menu-category-label">🥟 Starters</p>
+      <p class="menu-category-label">🥟 Starter's</p>
     </div>
     <div class="menu-panel" id="tab-entrees">
       <p class="menu-category-label">🥩 Entrée</p> 
@@ -119,13 +118,12 @@
       <p class="menu-category-label">🇪🇹 Habesha Corner</p>
     </div>
     <div class="menu-panel" id="tab-pasta">
-      <p class="menu-category-label">🍝 Pasta · Rigatoni or Linguine</p>
+      <p class="menu-category-label">🍝 Pasta</p>
     </div>
-    <div class="menu-panel" id="tab-sandwiches">
-      <p class="menu-category-label">🍔 Sandwiches & Burgers</p>
+    <div class="menu-panel" id="tab-Salad / Sandwich">
+      <p class="menu-category-label">🥗 Salad & 🥪 Sandwich</p>
     </div>
   </div>
-
   <!-- Sides / condiments expander -->
   <div class="sides-box">
     <button class="sides-toggle">🥄 Sides & Condiments <span class="toggle-icon">+</span></button>
@@ -505,36 +503,45 @@
   // 3. RENDER MENU
   // ==============================================
   async function renderMenu() {
-    try {
-      const dishes = await fetchDocuments('dish');
-      ['starters','entrees','habesha','pasta','sandwiches'].forEach(cat => {
-        const panel = document.getElementById(`tab-${cat}`);
-        if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
-      });
-      dishes.forEach(dish => {
-        const cat = dish.data.category;
-        const panel = document.getElementById(`tab-${cat}`);
-        if (!panel) return;
-        const card = document.createElement('div');
-        card.className = 'menu-card';
-        const imgHtml = dish.data.image?.url
-          ? `<img src="${getImageUrl(dish.data.image, 200)}" alt="${dish.data.name}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-right:15px;">`
-          : '';
-        const descText = dish.data.description?.[0]?.text || '';
-        card.innerHTML = `
-          ${imgHtml}
-          <div class="menu-card-left">
-            <div class="menu-item-name">${dish.data.name}</div>
-            <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-          </div>
-          <div class="menu-item-price">ETB ${dish.data.price}</div>
-        `;
-        panel.appendChild(card);
-      });
-    } catch (err) {
-      console.error('Menu load error:', err);
-    }
+  try {
+    const dishes = await fetchDocuments('dish');
+    // ⚠️ Must match the data-tab and panel ID exactly
+    const categories = ['starters', 'entrees', 'habesha', 'pasta', 'Salad / Sandwich'];
+    
+    // Clear all panels
+    categories.forEach(cat => {
+      const panel = document.getElementById(`tab-${cat}`);
+      if (panel) panel.querySelectorAll('.menu-card').forEach(card => card.remove());
+    });
+
+    dishes.forEach(dish => {
+      const cat = dish.data.category;
+      // If category is null or invalid, skip this dish
+      if (!cat || !categories.includes(cat)) return;
+
+      const panel = document.getElementById(`tab-${cat}`);
+      if (!panel) return;
+
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+      const imgHtml = dish.data.image?.url
+        ? `<img src="${getImageUrl(dish.data.image, 200)}" alt="${dish.data.name}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-right:15px;">`
+        : '';
+      const descText = dish.data.description?.[0]?.text || '';
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="menu-card-left">
+          <div class="menu-item-name">${dish.data.name}</div>
+          <div class="menu-item-desc">${descText.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        </div>
+        <div class="menu-item-price">ETB ${dish.data.price}</div>
+      `;
+      panel.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Menu load error:', err);
   }
+}
 
   // ==============================================
   // 4. RENDER EVENTS
